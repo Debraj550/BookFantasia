@@ -5,15 +5,8 @@ import App from './App';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-function tick() {
-  const element = (
-    <div>
-      <App />
-    </div>
-  );
-  root.render(element);
-}
-setInterval(tick, 1000);
+root.render(<App />);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

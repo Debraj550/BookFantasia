@@ -1,11 +1,16 @@
-import logo from './assets/logo.svg';
+import React from 'react';
 import './assets/App.css';
+import {BrowserRouter as Router, Routes, Route} from  'react-router-dom';
+import Header from './componenets/Header';
+import Footer from './componenets/Footer';
+import Signup from './componenets/Signup';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+        <Header />
+        <Signup ></Signup>
+        <Footer />
     </div>
   );
 }

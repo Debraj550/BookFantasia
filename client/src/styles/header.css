@@ -1,0 +1,34 @@
+.header {
+    box-sizing: border-box;
+}
+nav {
+    background: rgb(62, 40, 84);
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+.nav_links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+}
+.nav_links a {
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.nav_links a:hover {
+    color: #777;
+}
+
+li .active {
+    color: #555;
+}
