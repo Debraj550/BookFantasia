@@ -1,17 +1,19 @@
 import React from 'react';
 import './assets/App.css';
-import {BrowserRouter as Router, Routes, Route} from  'react-router-dom';
+import {BrowserRouter as Router} from  'react-router-dom';
 import Header from './componenets/Header';
 import Footer from './componenets/Footer';
-import Signup from './componenets/Signup';
+import pathRoutes from './routes/pathRoutes.jsx';
 
 function App() {
   return (
-    <div className="App">
-        <Header />
-        <Signup ></Signup>
-        <Footer />
-    </div>
+    <Router>
+      <div className="App">
+          <Header />
+          {pathRoutes}
+          <Footer />
+      </div>
+    </Router>
   );
 }
 

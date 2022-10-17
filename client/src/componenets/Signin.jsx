@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
-import '../styles/signup.css';
 import { Link } from 'react-router-dom';
+import '../styles/signup.css';
 
-const Signup = () => {
+const Signin = () => {
   
   const url = "http://localhost:8000/sign_in/";
   const [data, setData] = useState({
@@ -95,21 +95,10 @@ const Signup = () => {
                   <div className="card-body p-md-5">
                     <div className="row justify-content-center">
                       <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
+                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
 
                         <form className="mx-1 mx-md-4">
-                          <div className="d-flex flex-row align-items-center mb-4">
-                            <i className="fas fa-user fa-lg me-3 fa-fw"></i>
-                            <div className="form-outline flex-fill mb-0 mr">
-                              <input onChange={handleChange} value = {data.firstName} required type="text" id="firstName" 
-                              className="form-control invalid" />
-                              <label className="form-label" htmlFor="firstName">First Name</label>
-                            </div>
-                            <div className="form-outline flex-fill mb-0">
-                              <input onChange={handleChange} value = {data.lastName} required type="text" id="lastName" className="form-control" />
-                              <label className="form-label" htmlFor="lastName">Last Name</label>
-                            </div>
-                          </div>
+                    
                           <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div className="form-outline flex-fill mb-0">
@@ -126,24 +115,16 @@ const Signup = () => {
                             </div>
                           </div>
 
-                          <div className="d-flex flex-row align-items-center mb-4">
-                            <i className="fas fa-key fa-lg me-3 fa-fw"></i>
-                            <div className="form-outline flex-fill mb-0">
-                              <input onChange={handleChange} required value = {data.confirmPassword} 
-                               type="password" id="confirmPassword" className="form-control" />
-                              <label className="form-label" htmlFor="confirmPassword">Repeat your password</label>
-                            </div>
-                          </div>
                           <div className="form-check d-flex justify-content-flex-start mb-5">
                           </div>
                           
                           <div className="form-check d-flex justify-content-center mb-5">
                             <label className="form-check-label" htmlFor="form2Example3">
-                              Already have an account ? <Link to = '/signin'>Sign In</Link>
+                              Don't have an account yet ? <Link to = '/signup'>Sign Up</Link>
                             </label>
                           </div>
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            <button onClick={submitUser} type="submit" className="btn btn-primary btn-lg">Register</button>
+                            <button onClick={submitUser} type="submit" className="btn btn-primary btn-lg">Sign in</button>
                           </div>
                         </form>
 
@@ -161,4 +142,4 @@ const Signup = () => {
         </section>   
   )     
 }
-export default Signup;
+export default Signin;
