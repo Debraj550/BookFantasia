@@ -1,6 +1,7 @@
 import json
+from tkinter.tix import Tree
 from urllib import request
-
+from django.core import serializers
 from django.shortcuts import render
 from .models import *
 from django.http import *
@@ -9,24 +10,28 @@ from .serializers import *
 from rest_framework.decorators import api_view
 
 # Create your views here.
-def sign_in_load(request):
-    return render(request, "sign_in.html")
 
-@api_view(["GET","POST"])
-def sign_in(request):
-    s=json.dumps(request.data)
-    res = json.loads(s)
-    email=res["email"]
-    password=res["password"]
-    user=person.objects.all()
+
+@api_view(["GET"])
+def getUser(request):
+    email = request.GET.get("email_id", "NULL")
+    password = request.GET.get("password", "NULL")
+    user = person.objects.all()
+    isPresent = False
     for u in user:
-        if (u.email==email) and (u.password==password):
-            first_name=u.first_name
-            last_name=u.last_name
+        if (u.email == email) and (u.password == password):
+            first_name = u.first_name
+            last_name = u.last_name
+            isPresent = True
         else:
             first_name = "NULL"
             last_name = "NULL"
 
-    return JsonResponse({'first_name':first_name,'last_name':last_name,'email': email,'password':password})
+    return JsonResponse({'first_name': first_name, 'last_name': last_name, 'email': email,
+                         'isPresent': isPresent})
 
 
+@api_view(["GET"])
+def getAllUser(request):
+    user = list(person.objects.all().values())
+    return JsonResponse(user, safe=False)
