@@ -35,8 +35,16 @@ nav {
     color: #777;
 }
 
+
+.searchbar {
+   display: flex;
+}
+
 li .active {
     color: #555;
+}
+.nav_links li {
+    margin-right: 1rem;
 }
 .header input[type=text] {
     max-width: 500px;
