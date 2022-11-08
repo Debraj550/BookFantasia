@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import "../styles/sellbook.css";
 
 const SellBook = () => {
   return (
-    <div>
-        This is sellbook page.
+    <div className="sellbook-container">
+      <div className="form-container">Hello</div>
     </div>
-  )
-}
+  );
+};
 
-export default SellBook
+export default SellBook;
