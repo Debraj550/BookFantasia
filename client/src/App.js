@@ -4,14 +4,19 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./componenets/Header";
 import Footer from "./componenets/Footer";
 import pathRoutes from "./routes/pathRoutes.jsx";
+import Home from "./pages/Home.jsx";
+import NavigationBar from "./componenets/NavigationBar.jsx";
+
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
+        
         {pathRoutes}
         <Footer />
+         
       </div>
     </Router>
   );
