@@ -1,12 +1,12 @@
 .site-footer {
-  background-color: black;
   color: white;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
   font-weight: bold;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  min-height: 50px;
   position: absolute;
-  width: 100%;
 }
 .footer-container {
   margin: 0;

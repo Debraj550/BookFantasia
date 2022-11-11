@@ -1,15 +1,15 @@
 .sellbook-container {
-    min-height: 100%;
-    background-color: #eeeeee;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  min-height: 100vh;
+  background-color: #eee;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .form-container {
-    width: 75%;
-    background-color: white;
-    height: auto;
-    border-radius: 15px;
-    padding: 10px;
+  width: 75%;
+  background-color: #fff;
+  height: auto;
+  border-radius: 15px;
+  padding: 10px;
 }

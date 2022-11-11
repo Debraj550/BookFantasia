@@ -7,7 +7,7 @@ const Header = () => {
     <div>
       <nav className="header">
         <Link className="brand" to="/">
-          BookFantasia{" "}
+          BookFantasia <i class="fa fas fa-home"></i>
         </Link>
         <div className="search-bar">
           <input
