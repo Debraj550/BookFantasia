@@ -14,6 +14,7 @@ class book(m.Model):
     category=m.CharField(max_length=110)
     quantity=m.IntegerField()
     no_of_hit=m.IntegerField()
-
+    seller_rating=m.CharField(default="",max_length=10, null=True, blank=True)
+    book_img=m.ImageField(default="",upload_to="image_folder")
     def __str__(self):
         return self.book_name

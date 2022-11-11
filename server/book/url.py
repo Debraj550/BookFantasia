@@ -4,6 +4,6 @@ from .views import *
 
 urlpatterns = [
 
-         path("books/",books),
+         path("api/books/",books),
 
 ]
