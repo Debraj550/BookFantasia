@@ -15,37 +15,44 @@ def books(request):
 
     cond=request.GET.get("book_id",'NULL')
     if(cond!="NULL"):
-        queryed_book = book.objects.filter(book_id=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(book_id=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     cond=request.GET.get("user_id",'NULL')
     if(cond!="NULL"):
-        queryed_book = book.objects.filter(user_id=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(user_id=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     cond = request.GET.get("book_name", 'NULL')
     if (cond != "NULL"):
-        queryed_book = book.objects.filter(book_name=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(book_name=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     cond = request.GET.get("author_name", 'NULL')
     if (cond != "NULL"):
-        queryed_book = book.objects.filter(author_name=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(author_name=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     cond = request.GET.get("language", 'NULL')
     if (cond != "NULL"):
-        queryed_book = book.objects.filter(language=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(language=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     cond = request.GET.get("category", 'NULL')
     if (cond != "NULL"):
-        queryed_book = book.objects.filter(category=cond)
-        data = serializers.serialize('json', queryed_book)
+        data = book.objects.filter(category=cond)
+        data = list(data.values())
+        #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
     else:
-        queryed_book = book.objects.all()
-        data = serializers.serialize('json',queryed_book )
+        data = book.objects.all()
+        data = list(data.values())
+        #data = serializers.serialize('json',queryed_book )
         return JsonResponse(data,safe=False)
 
 
