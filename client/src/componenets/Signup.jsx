@@ -4,7 +4,7 @@ import "../styles/signup.css";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-  const url = "http://localhost:8000/sign_in/";
+  const url = "http://localhost:8000/sign_in/props";
   const [data, setData] = useState({
     firstName: "",
     lastName: "",

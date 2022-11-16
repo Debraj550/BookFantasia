@@ -3,19 +3,23 @@ import "../styles/header.css";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const isLoggedin = window.localStorage.getItem("token");
+  const userName = window.localStorage.getItem("userName");
   return (
     <div>
       <nav className="header">
-        <Link className="brand" to="/">
-          BookFantasia <i class="fa fas fa-home"></i>
+        <Link className="brand col-lg-2 col-md-2 col-sm-3" to="/">
+          <i className="fa fa fa-book">BookFantasia </i>
         </Link>
         <div className="search-bar">
           <input
             type="text"
-            className="col-md-12 box"
-            placeholder="Search.."
+            className="col-md-12"
+            placeholder="Search books"
           ></input>
-          <button className="search_button">Search</button>
+          <button className="btn-xm btn-info">
+            <i className="fa fas fa-search"></i>
+          </button>
         </div>
         <ul>
           <li className="active ">
@@ -24,8 +28,9 @@ const Header = () => {
             </Link>
           </li>
           <li className="active ">
-            <Link className="items" to="/signin">
-              <i className="fa fa-fw fa-user"></i>Sign In
+            <Link className="items" to={isLoggedin ? "/signout" : "/signin"}>
+              <i className="fa fa-fw fa-user"></i>
+              {isLoggedin ? `Hi,${userName}` : "Sign In"}
             </Link>
           </li>
           <li className="active ">

@@ -3,14 +3,14 @@ import "./assets/App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./componenets/Header";
 import Footer from "./componenets/Footer";
-import pathRoutes from "./routes/pathRoutes.jsx";
+import PathRoutes from "./routes/PathRoutes.jsx";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header className="header-element" />
-        <section className="content">{pathRoutes}</section>
+        <PathRoutes />
         <Footer className="footer-element" />
       </div>
     </Router>

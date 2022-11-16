@@ -1,10 +1,12 @@
 import React from "react";
 import NavigationBar from "../componenets/NavigationBar";
-import { BrowserRouter as Router, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import "../styles/home.css";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {}, []);
   return (
     <div className="home-page">
       <NavigationBar />

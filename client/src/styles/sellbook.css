@@ -7,9 +7,22 @@
   justify-content: center;
 }
 .form-container {
-  width: 75%;
+  width: 60%;
   background-color: #fff;
   height: auto;
   border-radius: 15px;
   padding: 10px;
+}
+
+.form-group {
+  display: flex;
+}
+
+.register-book-heading {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 2px solid #eee;
+  border-radius: 5px;
 }

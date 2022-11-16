@@ -1,13 +1,9 @@
 import React from "react";
 
 const engineering = (props) => {
-  const category = props;
-  const random = () => {
-    console.log(category);
-  };
   return (
     <div>
-      <button onClick={random}>Hello</button>
+      <h1>This is - {props.props.category}</h1>
     </div>
   );
 };
