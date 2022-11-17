@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/sellbook.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SellBook = () => {
+  const [image, setImage] = useState();
+  const [preview, setPreview] = useState();
   const [bookData, setBookData] = useState({
     bookName: "",
     authorName: "",
     category: "",
-    language: "",
+    language: "english",
     description: "",
-    image: [],
     quantity: 1,
-    price: 0,
+    price: null,
   });
 
   const handleChange = (event) => {
@@ -20,6 +21,24 @@ const SellBook = () => {
     newBookData[event.target.id] = event.target.value;
     setBookData(newBookData);
     console.log(newBookData);
+  };
+  useEffect(() => {
+    if (!image) {
+      setPreview(undefined);
+      return;
+    }
+    const objectUrl = URL.createObjectURL(image);
+    setPreview(objectUrl);
+    console.log(image);
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [image]);
+
+  const imageChange = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setImage(undefined);
+      return;
+    }
+    setImage(e.target.files[0]);
   };
 
   return (
@@ -63,33 +82,20 @@ const SellBook = () => {
               Category
             </label>
             <div className="col-sm-2 btn-group">
-              <button
+              <select
+                id="category"
                 onChange={handleChange}
-                type="button"
-                className="btn dropdown-toggle"
-                data-toggle="dropdown"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style={{ backgroundColor: "#DDD" }}
+                className="form-select"
+                aria-label="Default select example"
               >
-                Select
-              </button>
-              <div className="dropdown-menu">
-                <Link className="dropdown-item" to="#">
-                  Engineering
-                </Link>
-                <Link className="dropdown-item" to="#">
-                  Stories and Novels
-                </Link>
-                <Link className="dropdown-item" to="#">
-                  Medical
-                </Link>
-                <div className="dropdown-divider"></div>
-                <Link className="dropdown-item" to="#">
-                  Other
-                </Link>
-              </div>
+                <option value="" selected>
+                  Select
+                </option>
+                <option value="engineering">Engineering</option>
+                <option value="stories">Stories and Novels</option>
+                <option value="medical">Medical</option>
+                <option value="others">Others</option>
+              </select>
             </div>
           </div>
           <div className="form-group row mb-2">
@@ -104,6 +110,7 @@ const SellBook = () => {
                   type="radio"
                   name="flexRadioDefault"
                   id="language"
+                  value="english"
                   defaultChecked
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
@@ -117,6 +124,7 @@ const SellBook = () => {
                   type="radio"
                   name="flexRadioDefault"
                   id="language"
+                  value="hindi"
                 />
                 <label className="form-check-label" htmlFor="flexRadioDefault2">
                   Hindi
@@ -147,7 +155,7 @@ const SellBook = () => {
             </label>
             <div className="col-sm-10">
               <input
-                onChange={handleChange}
+                onChange={imageChange}
                 type="file"
                 className="form-control-file"
                 id="image"
@@ -155,6 +163,20 @@ const SellBook = () => {
               />
             </div>
           </div>
+          {image && (
+            <div className="form-group row mb-2">
+              <label
+                className="col-sm-2 col-form-label"
+                htmlFor="exampleFormControlFile1"
+              >
+                [ Preview ]
+              </label>
+              <div className="col-sm-10">
+                <img src={preview} alt="image" width={200} height={250}></img>
+              </div>
+            </div>
+          )}
+
           <div className="form-group row mb-2">
             <label
               className="col-sm-2 col-form-label"
@@ -163,17 +185,16 @@ const SellBook = () => {
               Quantity
             </label>
             <div className="col-sm-3 d-flex space-betweeen">
-              <input type="button" value="-" onClick={"yo"} />
               <input
                 onChange={handleChange}
                 id="quantity"
                 value={bookData.quantity}
-                type="text"
+                type="number"
+                min="1"
                 className="form-control"
                 aria-label="Amount"
                 placeholder="Enter quantity"
               />
-              <input type="button" value="+" onClick="add()" />
             </div>
           </div>
         </form>

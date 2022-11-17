@@ -10,7 +10,8 @@ import Engineering from "../componenets/catergory/Engineering";
 import Stories from "../componenets/catergory/Stories";
 
 const pathRoutes = () => {
-  const isLoggedin = window.localStorage.getItem("token");
+  //const isLoggedin = window.localStorage.getItem("token");
+  const isLoggedin = true;
   console.log(isLoggedin);
   return (
     <Routes>
