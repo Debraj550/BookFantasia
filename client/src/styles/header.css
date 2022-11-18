@@ -65,30 +65,21 @@ li {
   align-items: center;
 }
 
-.sell-book {
-  text-decoration: none;
-  border: 1px solid black;
-  padding: 10px 15px;
-  color: white;
-  background-color: rgb(156, 2, 2);
+.sellbook-btn {
   font-weight: bold;
-  border-radius: 0px;
-  margin: 0 auto;
-}
-.sell-book:hover {
-  color: cyan;
-}
-
-.btn-danger {
-  font-weight: bold;
-
+  align-items: center;
+  transition: transform 0.2s;
   margin: 0 auto;
 }
 
-.btn-danger:hover {
+.sellbook-btn:hover {
   transform: scale(1.1);
 }
 
 .search-bar {
   width: 40%;
+}
+
+.btn-danger {
+  font-weight: bold;
 }

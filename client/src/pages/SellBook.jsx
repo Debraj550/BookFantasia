@@ -1,19 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/sellbook.css";
 import { useState, useEffect } from "react";
+import axios from "../api/axios";
+import FormData from "form-data";
 
 const SellBook = () => {
+  const url = "/api/upload_books/";
+  const navigate = useNavigate();
+  const userId = window.localStorage.getItem("userId");
+
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const [bookData, setBookData] = useState({
+    userId: userId,
     bookName: "",
     authorName: "",
     category: "",
     language: "english",
     description: "",
     quantity: 1,
-    price: null,
+    price: 0,
   });
 
   const handleChange = (event) => {
@@ -29,7 +36,8 @@ const SellBook = () => {
     }
     const objectUrl = URL.createObjectURL(image);
     setPreview(objectUrl);
-    console.log(image);
+    //console.log(image);
+    console.log(userId);
     return () => URL.revokeObjectURL(objectUrl);
   }, [image]);
 
@@ -41,10 +49,28 @@ const SellBook = () => {
     setImage(e.target.files[0]);
   };
 
+  const submitBook = (event) => {
+    event.preventDefault();
+    let data = new FormData();
+    data.append("user_id", userId);
+    data.append("book_name", bookData.bookName);
+    data.append("author_name", bookData.authorName);
+    data.append("language", bookData.language);
+    data.append("desc", bookData.description);
+    data.append("price", bookData.price);
+    data.append("category", bookData.category);
+    data.append("quantity", bookData.quantity);
+    data.append("book_img", image);
+
+    axios
+      .post(url, data)
+      .then((res) => console.log(res))
+      .catch((errors) => console.log(errors));
+  };
   return (
     <div className="sellbook-container">
       <div className="form-container">
-        <form>
+        <form onSubmit={submitBook}>
           <div className="form-group row">
             <h4 className="register-book-heading">Register Book</h4>
             <br></br>
@@ -88,9 +114,7 @@ const SellBook = () => {
                 className="form-select"
                 aria-label="Default select example"
               >
-                <option value="" selected>
-                  Select
-                </option>
+                <option value="">Select</option>
                 <option value="engineering">Engineering</option>
                 <option value="stories">Stories and Novels</option>
                 <option value="medical">Medical</option>
@@ -196,6 +220,44 @@ const SellBook = () => {
                 placeholder="Enter quantity"
               />
             </div>
+          </div>
+          <div className="form-group row mb-4">
+            <label
+              className="col-sm-2 col-form-label"
+              htmlFor="exampleFormControlFile1"
+            >
+              Price
+            </label>
+            <div className="col-sm-4 d-flex space-betweeen">
+              <span className="input-group-text">
+                <i className="fa fa-rupee"></i>
+              </span>
+              <input
+                onChange={handleChange}
+                id="price"
+                value={bookData.price}
+                type="number"
+                min="0"
+                step="1"
+                className="form-control"
+                aria-label="Amount"
+                placeholder="Enter price"
+              />
+              <span className="input-group-text">.00</span>
+            </div>
+          </div>
+          <div className="form-group row submit-section">
+            <hr></hr>
+            <button
+              type="button"
+              className="btn btn-primary col-sm-2"
+              onClick={() => navigate("/Home")}
+            >
+              Back
+            </button>
+            <button type="submit" className="btn btn-primary col-sm-2">
+              Submit
+            </button>
           </div>
         </form>
       </div>

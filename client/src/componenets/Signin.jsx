@@ -30,10 +30,12 @@ const Signin = (props) => {
       const response = await axios
         .get(url, { params: { email_id: data.email, password: data.password } })
         .then((userData) => {
+          console.log(userData);
           const isPresent = userData.data.isPresent;
           if (isPresent) {
             window.localStorage.setItem("token", true);
             window.localStorage.setItem("userName", userData.data.first_name);
+            window.localStorage.setItem("userId", userData.data.user_id);
             setIsLoggedin(true);
             navigate("/Home");
             window.location.reload();

@@ -4,11 +4,11 @@ import json
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.core import serializers
+from .models import *
+
 from .serializers import *
 from rest_framework.decorators import api_view
 from django.http import *
-
-
 # Create your views here.
 @api_view(["GET","POST"])
 def books(request):
@@ -56,6 +56,7 @@ def books(request):
         return JsonResponse(data,safe=False)
 @api_view(["POST"])
 def upload_books(request):
+    print(request.POST)
     book_id = request.POST.get("book_id")
     user_id = request.POST.get("user_id", 'NULL')
     book_name = request.POST.get("book_name", 'NULL')
@@ -67,8 +68,8 @@ def upload_books(request):
     quantity = request.POST.get("quantity", 'NULL')
     no_of_hit=0
     book_rating = 4.5
-    book_img = request.POST.get("quantity", 'NULL')
+    book_img = request.FILES["book_img"]
     record=book(book_id=book_id,user_id=user_id,book_name=book_name,author_name=author_name,language=language,desc=desc,price=price,category=category,quantity=quantity,no_of_hit=no_of_hit,book_rating=book_rating,book_img=book_img)
     record.save()
-
+    return JsonResponse("Post created successfully",status = 200,safe=False)
 

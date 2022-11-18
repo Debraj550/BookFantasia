@@ -102,7 +102,7 @@ const Signup = () => {
                       Register
                     </p>
 
-                    <form className="mx-1 mx-md-4">
+                    <form onSubmit={submitUser} className="mx-1 mx-md-4">
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fa fa-fw fas fa-user fa-lg me-3 fa-fw"></i>
                         <div className="form-outline flex-fill mb-0 mr col">
@@ -199,7 +199,6 @@ const Signup = () => {
                       </div>
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button
-                          onClick={submitUser}
                           type="submit"
                           className="btn btn-primary btn-lg"
                         >

@@ -20,6 +20,7 @@ def getUser(request):
     isPresent = False
     for u in user:
         if (u.email == email) and (u.password == password):
+            user_id = u.user_id
             first_name = u.first_name
             last_name = u.last_name
             isPresent = True
@@ -27,11 +28,11 @@ def getUser(request):
             first_name = "NULL"
             last_name = "NULL"
 
-    return JsonResponse({'first_name': first_name, 'last_name': last_name, 'email': email,
+    return JsonResponse({'user_id': user_id, 'first_name': first_name, 'last_name': last_name, 'email': email,
                          'isPresent': isPresent})
 
 
 @api_view(["GET"])
 def getAllUser(request):
     user = list(person.objects.all().values())
-    return JsonResponse(user, safe=False)
+    return JsonResponse(200, safe=False)

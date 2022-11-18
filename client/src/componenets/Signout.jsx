@@ -7,6 +7,7 @@ const Signout = () => {
   const handleClick = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userName");
+    window.localStorage.removeItem("userId");
     navigate("/Home");
     window.location.reload();
   };

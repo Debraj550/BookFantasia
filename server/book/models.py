@@ -5,7 +5,7 @@ import user_detail.models as p
 class book(m.Model):
 
     book_id=m.IntegerField(primary_key = True)
-    user_id = m.ForeignKey(p.person,on_delete=m.CASCADE)
+    user_id = m.IntegerField()
     book_name=m.CharField(max_length=110)
     author_name= m.CharField(max_length=110)
     language=m.CharField(max_length=110)
@@ -16,7 +16,6 @@ class book(m.Model):
     no_of_hit=m.IntegerField()
     book_rating = m.IntegerField(null=True)
     date_time = m.DateTimeField(auto_now_add=True, null=True)
-
     book_img=m.ImageField(default="",upload_to="image_folder")
     def __str__(self):
         return self.book_name

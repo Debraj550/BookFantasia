@@ -26,3 +26,18 @@
   border-bottom: 2px solid #eee;
   border-radius: 5px;
 }
+
+.submit-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.submit-section button {
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.submit-section button:hover {
+  transform: scale(1.1);
+}

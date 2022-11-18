@@ -33,7 +33,7 @@ const Header = () => {
               {isLoggedin ? `Hi,${userName}` : "Sign In"}
             </Link>
           </li>
-          <li className="active ">
+          <li className="sellbook-btn ">
             <Link to="/SellBook">
               <button className="btn btn-danger">+SELL BOOKS</button>
             </Link>

@@ -9,9 +9,9 @@ import Signout from "../componenets/Signout";
 import Engineering from "../componenets/catergory/Engineering";
 import Stories from "../componenets/catergory/Stories";
 
-const pathRoutes = () => {
-  //const isLoggedin = window.localStorage.getItem("token");
-  const isLoggedin = true;
+const PathRoutes = () => {
+  const isLoggedin = window.localStorage.getItem("token");
+  //const isLoggedin = true;
   console.log(isLoggedin);
   return (
     <Routes>
@@ -53,4 +53,4 @@ const pathRoutes = () => {
   );
 };
 
-export default pathRoutes;
+export default PathRoutes;
