@@ -3,7 +3,13 @@
   justify-content: space-between;
   padding: 5px 15px;
   align-items: center;
-  background-color: #023b6d;
+  background-color: #020b3e;
+  top: 0;
+}
+.top-navbar {
+  top: 0;
+  position: sticky;
+  z-index: 2;
 }
 .brand {
   text-decoration: none;
@@ -65,14 +71,14 @@ li {
   align-items: center;
 }
 
-.sellbook-btn {
+.sellbook-btn-item {
   font-weight: bold;
   align-items: center;
   transition: transform 0.2s;
   margin: 0 auto;
 }
 
-.sellbook-btn:hover {
+.sellbook-btn-item:hover {
   transform: scale(1.1);
 }
 
@@ -82,4 +88,26 @@ li {
 
 .btn-danger {
   font-weight: bold;
+}
+
+.name-dropdown {
+  background-color: black;
+}
+
+.name-dropdown-items {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.2s;
+}
+
+.name-dropdown-items:hover {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  transform: scale(1.1);
+}
+
+.search-btn {
+  background-color: rgb(255, 132, 0);
 }

@@ -1,0 +1,24 @@
+.toggle {
+  display: flex;
+  color: red;
+}
+.amount-style {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.toggle .btn {
+  display: inline-block;
+  background-color: #023b6d;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+  width: 130px;
+  /*-webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;*/
+  cursor: pointer;
+}

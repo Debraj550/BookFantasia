@@ -1,0 +1,12 @@
+.product-page {
+  min-height: 90vh;
+  height: 100%;
+}
+
+.neon-effect {
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.neon-effect:hover {
+  box-shadow: 2px 2px 10px rgb(96, 0, 0);
+}

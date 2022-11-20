@@ -1,16 +1,18 @@
 import React from "react";
 import NavigationBar from "../componenets/NavigationBar";
 import { Outlet } from "react-router-dom";
-
 import "../styles/home.css";
 import { useEffect } from "react";
+import Slider from "../componenets/Slider/Slider";
+import { Container } from "react-bootstrap";
 
 const Home = () => {
-  useEffect(() => {}, []);
   return (
     <div className="home-page">
-      <NavigationBar />
-      <Outlet />
+      <NavigationBar className="main-navbar" />
+      <Container>
+        <Outlet />
+      </Container>
     </div>
   );
 };

@@ -1,0 +1,95 @@
+.product {
+  padding: 4rem 0;
+}
+
+.product p {
+  font-size: 1.4rem;
+  padding-top: 0.4rem;
+  display: inline-block;
+  vertical-align: text-top;
+  margin: 0 auto;
+}
+.product-price {
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: text-top;
+  margin: 0 auto;
+  color: black;
+}
+.deal {
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: text-top;
+  margin: 0 auto;
+  color: green;
+}
+.product_images {
+  display: flex;
+  vertical-align: text-top;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 400px;
+}
+.product-data {
+  display: inline-block;
+  color: black;
+  vertical-align: text-top;
+  margin: 0 auto;
+}
+.product {
+  display: flex;
+  flex-direction: row;
+  background-color: blanchedalmond;
+}
+.bookname {
+  color: black;
+}
+
+#authorname {
+  color: #023b6d;
+}
+
+.product-delivery {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+.productfreedelivery {
+  text-align: center;
+  margin-right: 10px;
+  padding-right: 10%;
+}
+.deliveryicon {
+  background-color: rgba(220, 220, 220, 0.5);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.6rem;
+}
+
+.product p {
+  font-size: 1.1rem;
+  padding-top: 0.4rem;
+}
+
+.book-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-img img {
+  max-width: 60%;
+  max-height: 700%;
+  min-width: 60%;
+  min-height: 70%;
+  aspect-ratio: 3/4;
+}
+
+.book-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

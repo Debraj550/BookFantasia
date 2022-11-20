@@ -35,4 +35,4 @@ def getUser(request):
 @api_view(["GET"])
 def getAllUser(request):
     user = list(person.objects.all().values())
-    return JsonResponse(200, safe=False)
+    return JsonResponse(user, safe=False)

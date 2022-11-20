@@ -1,0 +1,15 @@
+.icon-style{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+.icon{
+    font-size: 2rem;
+    color: orange;
+}
+.emptyicon{
+    font-size: 2.6rem;
+    
+}

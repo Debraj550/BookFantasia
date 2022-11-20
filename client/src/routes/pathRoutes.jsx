@@ -6,8 +6,9 @@ import Cart from "../pages/Cart";
 import Home from "../pages/Home";
 import SellBook from "../pages/SellBook";
 import Signout from "../componenets/Signout";
-import Engineering from "../componenets/catergory/Engineering";
-import Stories from "../componenets/catergory/Stories";
+import ProductCategory from "../componenets/catergory/ProductCategory";
+import ProductPage from "../pages/ProductPage";
+import Slider from "../componenets/Slider/Slider";
 
 const PathRoutes = () => {
   const isLoggedin = window.localStorage.getItem("token");
@@ -17,29 +18,23 @@ const PathRoutes = () => {
     <Routes>
       <Route exact path="/" element={<Navigate to="/Home" />}></Route>
       <Route path="/Home" element={<Home />}>
-        <Route
-          exact
-          path="Engineering"
-          element={<Engineering props={{ category: "engineering" }} />}
-        ></Route>
-        <Route
-          exact
-          path="Stories"
-          element={<Stories category="stories" />}
-        ></Route>
+        <Route path="" element={<Slider />}></Route>
+        <Route path=":category" element={<ProductCategory />}></Route>
       </Route>
+      <Route path="/product/:category" element={<ProductCategory />}></Route>
+      <Route path="/Productpage/:book_id" element={<ProductPage />}></Route>
       <Route exact path="/signup" element={<Signup />}></Route>
       <Route exact path="/signin" element={<Signin />}></Route>
       <Route exact path="/signout" element={<Signout />}></Route>
       <Route
         exact
         path="/SellBook"
-        element={isLoggedin ? <SellBook /> : <Signin />}
+        element={isLoggedin ? <SellBook /> : <Signin failed={true} />}
       ></Route>
       <Route
         exact
         path="/Cart"
-        element={isLoggedin ? <Cart /> : <Signin />}
+        element={isLoggedin ? <Cart /> : <Signin failed={true} />}
       ></Route>
       <Route
         path="*"
