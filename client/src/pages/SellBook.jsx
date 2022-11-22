@@ -4,12 +4,13 @@ import "../styles/sellbook.css";
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import FormData from "form-data";
+import Alert from "react-bootstrap/Alert";
 
 const SellBook = () => {
   const url = "/api/upload_books/";
   const navigate = useNavigate();
   const userId = window.localStorage.getItem("userId");
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const [bookData, setBookData] = useState({
@@ -64,12 +65,19 @@ const SellBook = () => {
 
     axios
       .post(url, data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        {
+          setIsSubmitted(true);
+        }
+      })
       .catch((errors) => console.log(errors));
   };
   return (
     <div className="sellbook-container">
       <div className="form-container">
+        {isSubmitted && (
+          <Alert variant="success">This is a Success alert—check it out!</Alert>
+        )}
         <form onSubmit={submitBook}>
           <div className="form-group row">
             <h4 className="register-book-heading">Register Book</h4>
@@ -116,8 +124,9 @@ const SellBook = () => {
               >
                 <option value="">Select</option>
                 <option value="engineering">Engineering</option>
-                <option value="stories">Stories and Novels</option>
+                <option value="business">Business</option>
                 <option value="medical">Medical</option>
+                <option value="stories">stories</option>
                 <option value="others">Others</option>
               </select>
             </div>

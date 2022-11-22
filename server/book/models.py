@@ -16,6 +16,7 @@ class book(m.Model):
     no_of_hit=m.IntegerField()
     book_rating = m.IntegerField(null=True)
     date_time = m.DateTimeField(auto_now_add=True, null=True)
+
     book_img=m.ImageField(default="",upload_to="image_folder")
     def __str__(self):
         return self.book_name

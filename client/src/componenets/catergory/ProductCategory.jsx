@@ -42,13 +42,24 @@ const ProductCategory = () => {
         <Row>
           {productData &&
             productData.map((product, k) => (
-              <Col key={product.book_id} xs={12} md={4} lg={3}>
-                <Card className="neon-effect">
+              <Col
+                className="card-row"
+                key={product.book_id}
+                xs={12}
+                md={4}
+                lg={3}
+              >
+                <Card className="neon-effect card-container">
                   <Link to={`/ProductPage/${product.book_id}`}>
-                    <Card.Img src={`${imageDefaultPath}/${product.book_img}`} />
+                    <Card.Img
+                      className="card-image"
+                      src={`${imageDefaultPath}/${product.book_img}`}
+                    />
                   </Link>
                   <Card.Body>
-                    <Card.Title>{product.book_name}</Card.Title>
+                    <Card.Title className="card-title">
+                      {product.book_name}
+                    </Card.Title>
                     <Card.Text>{product.price}</Card.Text>
                     <Button className="col-md-12 d-flex center">
                       Add to cart

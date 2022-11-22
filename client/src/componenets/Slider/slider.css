@@ -15,7 +15,7 @@
   opacity: 1;
   transform: translateX(-50%);
 }
-img {
-  height: 100%;
-  width: 55%;
+
+.slide-item {
+  height: 20rem;
 }

@@ -6,6 +6,13 @@
   background-color: #020b3e;
   top: 0;
 }
+Navbar {
+  background-color: #020b3e;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-evenly;
+}
 .top-navbar {
   top: 0;
   position: sticky;
@@ -89,6 +96,9 @@ li {
 .btn-danger {
   font-weight: bold;
 }
+.btn-danger:active {
+  background-color: none;
+}
 
 .name-dropdown {
   background-color: black;
@@ -110,4 +120,14 @@ li {
 
 .search-btn {
   background-color: rgb(255, 132, 0);
+}
+
+.dropdown-user-btn {
+  background-color: "#020B3E";
+}
+Dropdown {
+  transition: transform 0.2s;
+}
+Dropdown:hover {
+  transform: scale(1.1);
 }

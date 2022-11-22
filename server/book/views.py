@@ -9,8 +9,12 @@ from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
 from django.http import *
+
+from soft_proj.settings import BASE_DIR
+
+
 # Create your views here.
-@api_view(["GET","POST"])
+@api_view(["GET"])
 def books(request):
 
     cond=request.GET.get("book_id",'NULL')
@@ -52,12 +56,12 @@ def books(request):
     else:
         data = book.objects.all()
         data = list(data.values())
+        #print("base dir path",BASE_DIR)
         #data = serializers.serialize('json',queryed_book )
         return JsonResponse(data,safe=False)
 @api_view(["POST"])
 def upload_books(request):
-    print(request.POST)
-    book_id = request.POST.get("book_id")
+    #book_id = request.POST.get("book_id")
     user_id = request.POST.get("user_id", 'NULL')
     book_name = request.POST.get("book_name", 'NULL')
     author_name = request.POST.get("author_name", 'NULL')
@@ -69,7 +73,88 @@ def upload_books(request):
     no_of_hit=0
     book_rating = 4.5
     book_img = request.FILES["book_img"]
-    record=book(book_id=book_id,user_id=user_id,book_name=book_name,author_name=author_name,language=language,desc=desc,price=price,category=category,quantity=quantity,no_of_hit=no_of_hit,book_rating=book_rating,book_img=book_img)
+    record=book(user_id=user_id,book_name=book_name,author_name=author_name,language=language,desc=desc,price=price,category=category,quantity=quantity,no_of_hit=no_of_hit,book_rating=book_rating,book_img=book_img)
     record.save()
     return JsonResponse("Post created successfully",status = 200,safe=False)
 
+@api_view(["PUT"])
+def update_book(request):
+    book_id=request.PUT.get("book_id", 'NULL')
+    cond = request.PUT.get("user_id", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.user_id = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(user_id=cond)
+
+        return JsonResponse(200, safe=False)
+    cond = request.PUT.get("book_name", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.book_name = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(book_name=cond)
+
+        return JsonResponse(200, safe=False)
+
+    cond = request.PUT.get("author_name", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.author_name = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(author_name=cond)
+
+        return JsonResponse(200, safe=False)
+
+
+    cond = request.PUT.get("language", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.language = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(language=cond)
+
+        return JsonResponse(200, safe=False)
+    cond = request.PUT.get("category", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.category = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(category=cond)
+        return JsonResponse(200, safe=False)
+
+    cond = request.PUT.get("category", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.category = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(category=cond)
+        return JsonResponse(200, safe=False)
+
+    cond = request.PUT.get("quantity", 'NULL')
+    if (cond != "NULL"):
+        try:
+            obj = book.objects.get(book_id=book_id)
+            obj.category = cond
+            obj.save()
+        except book.DoesNotExist:
+            obj = book.objects.create(quantity=cond)
+        return JsonResponse(200, safe=False)
+
+@api_view(["DELETE"])
+def delete_book(request):
+    book_id=request.DELETE.get('book_id')
+    book.objects.filter(book_id=book_id).delete()
+    return JsonResponse(200, safe=False)

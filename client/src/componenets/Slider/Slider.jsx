@@ -7,16 +7,16 @@ import "./slider.css";
 
 function Slider() {
   return (
-    <div className="container mt-3">
-      <Carousel>
-        <Carousel.Item>
-          <img className="d-block w-100" src={img2} alt="First slide" />
+    <div>
+      <Carousel className="container mt-3 mb-3 ">
+        <Carousel.Item className="slide-item">
+          <img className="d-flex w-100" src={img2} alt="First slide" />
         </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100" src={img3} alt="Second slide" />
+        <Carousel.Item className="slide-item">
+          <img className="d-flex w-100" src={img3} alt="Second slide" />
         </Carousel.Item>
-        <Carousel.Item>
-          <img className="d-block w-100" src={img1} alt="Third slide" />
+        <Carousel.Item className="slide-item">
+          <img className="d-flex w-100" src={img1} alt="Third slide" />
         </Carousel.Item>
       </Carousel>
     </div>

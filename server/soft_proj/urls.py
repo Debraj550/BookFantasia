@@ -18,6 +18,9 @@ from django.urls import path
 from django.urls import *
 urlpatterns = [
     path("",include("book.url")),
+    path("",include("pre_registration.url")),
+    path("",include("cart.url")),
     path("",include("user_detail.url")),
+    path("",include("review.url")),
     path('admin/', admin.site.urls),
 ]

@@ -45,14 +45,17 @@ const ProductPage = () => {
       {product && (
         <Row className="product">
           <Col lg={6} md={6} xs={12} className="book-img">
-            <img src={`${imageDefaultPath}/${product.book_img}`} />
+            <img
+              className="book-img-item"
+              src={`${imageDefaultPath}/${product.book_img}`}
+            />
           </Col>
           <Col lg={6} md={6} xs={12} className="book-description">
             <div className="product-data">
               <div className="bookname">
                 <h2> {product.book_name} </h2>
               </div>
-              <Star rating={product.seller_rating} />
+              <Star rating={product.book_rating} />
               <p>{product.desc}</p>
               <br />
               <label id="authorname">
@@ -60,15 +63,12 @@ const ProductPage = () => {
               </label>
               <br />
               <br />
-              <div className="product-price">
+              <div>
                 <h3>
-                  Price:
-                  <del>₹{product.price}</del>
-                </h3>{" "}
+                  <span className="product-price">₹{product.price}</span>
+                </h3>
                 <br />
               </div>
-              <br />
-              <br />
               <br />
               <div className="product-delivery">
                 <div className="productfreedelivery">

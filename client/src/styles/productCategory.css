@@ -10,3 +10,17 @@
 .neon-effect:hover {
   box-shadow: 2px 2px 10px rgb(96, 0, 0);
 }
+
+.card-title {
+  overflow: hidden;
+  height: 50px;
+}
+.card-image {
+  overflow: hidden;
+  height: 22rem;
+}
+
+.card-row {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

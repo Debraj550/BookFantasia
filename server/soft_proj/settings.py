@@ -18,6 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/image_folder/'
 MEDIA_ROOT = os.path.join(BASE_DIR)
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -42,7 +43,11 @@ INSTALLED_APPS = [
     'book',
     'user_detail',
     'rest_framework',
-    'corsheaders'
+    'corsheaders' ,
+    'cart',
+    'review' ,
+    'purchase',
+    'pre_registration'
 ]
 APPEND_SLASH=False
 MIDDLEWARE = [
@@ -113,13 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

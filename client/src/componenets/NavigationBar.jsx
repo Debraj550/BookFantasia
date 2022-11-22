@@ -9,13 +9,20 @@ const NavigationBar = () => {
         <nav>
           <ul className="product-nav-bar">
             <li className="product-items">
+              <Link to="/Home/bestseller">Best Sellers</Link>
+            </li>
+            <li className="product-items">
               <Link to="/Home/engineering">Engineering</Link>
+            </li>
+
+            <li className="product-items">
+              <Link to="/Home/medical">Medical</Link>
+            </li>
+            <li className="product-items">
+              <Link to="/Home/business">Business</Link>
             </li>
             <li className="product-items">
               <Link to="/Home/stories">Stories and Novels</Link>
-            </li>
-            <li className="product-items">
-              <Link to="/Home/bestseller">Best Sellers</Link>
             </li>
           </ul>
         </nav>

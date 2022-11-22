@@ -11,10 +11,6 @@
 }
 .product-price {
   font-weight: bold;
-  display: inline-block;
-  vertical-align: text-top;
-  margin: 0 auto;
-  color: black;
 }
 .deal {
   font-weight: bold;
@@ -92,4 +88,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.book-img-item {
+  transition: transform 0.2s;
+}
+.book-img-item:hover {
+  transform: scale(1.1);
 }
