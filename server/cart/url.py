@@ -6,4 +6,5 @@ urlpatterns = [
 
          path("api/get_cart/",get_cart),
          path("api/upload_cart/",update_cart),
+         path("api/delete_cart/",delete_cart),
 ]

@@ -96,3 +96,8 @@
 .book-img-item:hover {
   transform: scale(1.1);
 }
+
+.add-cart-buttons {
+  display: flex;
+  gap: 2rem;
+}

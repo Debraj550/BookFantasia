@@ -10,24 +10,20 @@ import "../styles/cartTogle.css";
 import Star from "../componenets/Star";
 import axios from "../api/axios";
 import { Col, Row } from "react-bootstrap";
+import FormData from "form-data";
 
-const url = "/api/get_books/";
 const ProductPage = () => {
+  const addToCartUrl = "/api/upload_cart/";
+  const getBookUrl = "/api/get_books/";
   const { book_id } = useParams();
   const [product, setProduct] = useState();
+  const userId = window.localStorage.getItem("userId");
   const [amount, setAmount] = useState(1);
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
-  const setDecrease = () => {
-    amount > 1 ? setAmount(amount - 1) : setAmount(1);
-  };
-
-  const setIncrease = () => {
-    amount < 64 ? setAmount(amount + 1) : setAmount(64);
-  };
 
   const getSingleProduct = async () => {
     await axios
-      .get(url, { params: { book_id: book_id } })
+      .get(getBookUrl, { params: { book_id: book_id } })
       .then((res) => {
         setProduct(res.data[0]);
       })
@@ -40,6 +36,33 @@ const ProductPage = () => {
     getSingleProduct();
   }, []);
 
+  const setDecrease = () => {
+    amount > 1 ? setAmount(amount - 1) : setAmount(1);
+    console.log(amount);
+  };
+
+  const setIncrease = () => {
+    amount < product.quantity
+      ? setAmount(amount + 1)
+      : setAmount(product.quantity);
+    console.log(amount);
+  };
+
+  const addToCart = async () => {
+    const cartData = new FormData();
+    cartData.append("book_id", book_id);
+    cartData.append("user_id", userId);
+    cartData.append("quantity", amount);
+    console.log(cartData);
+    const response = await axios
+      .post(addToCartUrl, cartData)
+      .then((res) => {
+        {
+          console.log(res);
+        }
+      })
+      .catch((errors) => console.log(errors));
+  };
   return (
     <div>
       {product && (
@@ -98,7 +121,9 @@ const ProductPage = () => {
                 <p style={{ fontWeight: "bold" }}>
                   <span>
                     {" "}
-                    {product.quantity > 0 ? "In Stock" : "Not Available"}
+                    {product.quantity > 0
+                      ? `In Stock: ${product.quantity}`
+                      : "Out of stock"}
                   </span>
                 </p>
               </div>
@@ -109,9 +134,17 @@ const ProductPage = () => {
                 setIncrease={setIncrease}
               />
               <br />
-              <NavLink to={`/Cart`}>
-                <button className="btn btn-primary">Add to Cart</button>
-              </NavLink>
+              <div className="add-cart-buttons">
+                <button onClick={addToCart} className="btn btn-primary">
+                  Add to Cart
+                </button>
+
+                <NavLink to={`/Cart`}>
+                  <button onClick={addToCart} className="btn btn-primary">
+                    Buy Now
+                  </button>
+                </NavLink>
+              </div>
             </div>
           </Col>
         </Row>

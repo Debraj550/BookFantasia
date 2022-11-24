@@ -14,7 +14,6 @@ const NavigationBar = () => {
             <li className="product-items">
               <Link to="/Home/engineering">Engineering</Link>
             </li>
-
             <li className="product-items">
               <Link to="/Home/medical">Medical</Link>
             </li>

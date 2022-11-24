@@ -58,9 +58,21 @@ const Header = () => {
 
                 <Dropdown.Menu>
                   <Dropdown.Item onClick={userSignout}>Sign Out</Dropdown.Item>
-                  <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    Something else
+                  <Dropdown.Item href="/orders">
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/orders"
+                    >
+                      My Orders
+                    </Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link
+                      style={{ color: "inherit", textDecoration: "none" }}
+                      to="/posted_books"
+                    >
+                      Books posted
+                    </Link>
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

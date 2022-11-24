@@ -14,6 +14,7 @@ from rest_framework.decorators import api_view
 
 @api_view(["GET"])
 def getUser(request):
+    user_id = request.GET.get("user_id","NULL")
     email = request.GET.get("email_id", "NULL")
     password = request.GET.get("password", "NULL")
     user = person.objects.all()
@@ -23,11 +24,12 @@ def getUser(request):
             first_name = u.first_name
             last_name = u.last_name
             isPresent = True
+            user_id = u.user_id
         else:
             first_name = "NULL"
             last_name = "NULL"
 
-    return JsonResponse({'first_name': first_name, 'last_name': last_name, 'email': email,
+    return JsonResponse({'user_id':user_id,'first_name': first_name, 'last_name': last_name, 'email': email,
                          'isPresent': isPresent})
 @api_view(["GET"])
 def getAllUser(request):

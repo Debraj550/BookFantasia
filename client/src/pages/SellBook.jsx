@@ -79,13 +79,15 @@ const SellBook = () => {
           <Alert variant="success">This is a Success alert—check it out!</Alert>
         )}
         <form onSubmit={submitBook}>
-          <div className="form-group row">
-            <h4 className="register-book-heading">Register Book</h4>
+          <div className="form-group row ">
+            <h4 className="register-book-heading px-4 py-3 text-uppercase fw-bold rounded-pill bg-light">
+              Register Book
+            </h4>
             <br></br>
           </div>
           <div className="form-group row mb-2">
             <label htmlFor="book_name" className="col-sm-2 col-form-label">
-              Book Name
+              <em>Book Name</em>
             </label>
             <div className="col-sm-10">
               <input
@@ -99,7 +101,7 @@ const SellBook = () => {
           </div>
           <div className="form-group row mb-2">
             <label htmlFor="book_name" className="col-sm-2 col-form-label">
-              Author Name
+              <em>Author Name</em>
             </label>
             <div className="col-sm-10">
               <input
@@ -259,12 +261,15 @@ const SellBook = () => {
             <hr></hr>
             <button
               type="button"
-              className="btn btn-primary col-sm-2"
+              className="btn col-sm-2 rounded-pill btn-dark"
               onClick={() => navigate("/Home")}
             >
               Back
             </button>
-            <button type="submit" className="btn btn-primary col-sm-2">
+            <button
+              type="submit"
+              className="btn  col-sm-2 rounded-pill btn-dark"
+            >
               Submit
             </button>
           </div>

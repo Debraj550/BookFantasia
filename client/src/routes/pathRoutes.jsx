@@ -10,6 +10,7 @@ import ProductCategory from "../componenets/catergory/ProductCategory";
 import ProductPage from "../pages/ProductPage";
 import Slider from "../componenets/Slider/Slider";
 import Orders from "../pages/Orders";
+import PostedBooks from "../pages/PostedBooks";
 
 const PathRoutes = () => {
   const isLoggedin = window.localStorage.getItem("token");
@@ -26,6 +27,7 @@ const PathRoutes = () => {
       <Route path="/Productpage/:book_id" element={<ProductPage />}></Route>
       <Route exact path="/signup" element={<Signup />}></Route>
       <Route exact path="/orders" element={<Orders />}></Route>
+      <Route exact path="/posted_books" element={<PostedBooks />}></Route>
       <Route exact path="/signin" element={<Signin />}></Route>
       <Route exact path="/signout" element={<Signout />}></Route>
       <Route
