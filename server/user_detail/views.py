@@ -35,12 +35,13 @@ def getUser(request):
 def getAllUser(request):
     user = list(person.objects.all().values())
     return JsonResponse(user, safe=False)
+
 @api_view(["POST"])
 def update_user(request):
-    first_name=request.GET.get("first_name", "NULL")
-    last_name = request.GET.get("last_name", "NULL")
-    email = request.GET.get("email_id", "NULL")
-    password = request.GET.get("password", "NULL")
+    first_name=request.POST.get("first_name", "NULL")
+    last_name = request.POST.get("last_name", "NULL")
+    email = request.POST.get("email_id", "NULL")
+    password = request.POST.get("password", "NULL")
     record=person(first_name=first_name,last_name=last_name,email=email,password=password)
     record.save()
     return JsonResponse(200, safe=False)

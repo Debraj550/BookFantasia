@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../styles/signup.css";
 import { Link } from "react-router-dom";
+import axios from "../api/axios";
+import { Alert, Button } from "react-bootstrap";
 
 const Signup = () => {
-  const url = "http://localhost:8000/sign_in/props";
+  const url = "/api/upload_user/";
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -15,13 +17,9 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isLoggedin, setIsLoggedin] = useState(false);
+  const [signedUp, setSignedUp] = useState(false);
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmit) {
-      console.log("All fields are present.");
-    }
-  }, [errors]);
+  useEffect(() => {}, []);
 
   const handleChange = (event) => {
     const newData = { ...data };
@@ -49,26 +47,28 @@ const Signup = () => {
     return error;
   };
 
-  const submitUser = (event) => {
+  const submitUser = async (event) => {
     event.preventDefault();
     setErrors(validate(data));
-    setIsSubmit(true);
-
-    if (isSubmit === true) {
-      Axios.post(url, {
-        first_name: data.firstName,
-        last_name: data.lastName,
-        email: data.email,
-        password: data.password,
-      }).then((res) => {
-        if (res.data.result === "login successful") {
-          setIsLoggedin(true);
-        } else {
-          setIsLoggedin(false);
-        }
-        console.log(isLoggedin);
-      });
+    console.log(errors);
+    const signupData = new FormData();
+    if (data.password === data.confirmPassword) {
+      setIsSubmit(true);
+      signupData.append("first_name", data.firstName);
+      signupData.append("last_name", data.lastName);
+      signupData.append("email_id", data.email);
+      signupData.append("password", data.password);
+    }
+    if (isSubmit) {
+      axios
+        .post(url, signupData)
+        .then((res) => {
+          setSignedUp(true);
+        })
+        .catch();
     } else {
+      {
+      }
     }
   };
 
@@ -88,6 +88,18 @@ const Signup = () => {
         height: 100,
       }}
     >
+      {signedUp && (
+        <Alert variant="success">
+          Signed up successfully.
+          <Link
+            className="rounded-pill btn-success m-2 p-2"
+            to="/signin"
+            style={{ textDecoration: "none" }}
+          >
+            Click here to login
+          </Link>
+        </Alert>
+      )}
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">

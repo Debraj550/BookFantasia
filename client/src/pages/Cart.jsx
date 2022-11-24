@@ -11,6 +11,7 @@ const Cart = () => {
   const url = "/api/get_cart/";
   const getBookUrl = "/api/get_books/";
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
+  const deleteUrl = "api/delete_cart/";
   const userId = window.localStorage.getItem("userId");
   const [cartData, setCartData] = useState();
   const [errors, setErrors] = useState();
@@ -45,6 +46,14 @@ const Cart = () => {
         console.log(err);
       });
   };
+
+  const deleteItem = (book_id) => {
+    axios
+      .delete(deleteUrl, {
+        params: { user_id: userId, book_id: book_id },
+      })
+      .then((res) => console.log(res));
+  };
   return (
     <div className="cart">
       <section className="py-5">
@@ -72,7 +81,7 @@ const Cart = () => {
                   <tbody>
                     {cartData &&
                       cartData.map((data, k) => (
-                        <tr key={data.book_id}>
+                        <tr key={data.id}>
                           <th scope="row" className="border-0">
                             <div className="p-2">
                               <img
@@ -87,7 +96,7 @@ const Cart = () => {
                                     href="#"
                                     className="text-dark d-inline-block align-middle"
                                   >
-                                    {data.book_id}
+                                    Book Name
                                   </a>
                                 </h5>
                               </div>
@@ -101,7 +110,10 @@ const Cart = () => {
                           </td>
                           <td className="border-0 align-middle">
                             <a href="#" className="text-dark">
-                              <i className="bi bi-trash"></i>
+                              <i
+                                onClick={deleteItem(data.book_id)}
+                                className="fa fa-trash"
+                              ></i>
                             </a>
                           </td>
                         </tr>

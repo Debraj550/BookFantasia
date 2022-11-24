@@ -128,7 +128,7 @@ const SellBook = () => {
                 <option value="engineering">Engineering</option>
                 <option value="business">Business</option>
                 <option value="medical">Medical</option>
-                <option value="stories">stories</option>
+                <option value="stories">Stories</option>
                 <option value="others">Others</option>
               </select>
             </div>
