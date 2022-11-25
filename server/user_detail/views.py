@@ -17,7 +17,7 @@ def getUser(request):
     user_id = request.GET.get("user_id","NULL")
     email = request.GET.get("email_id", "NULL")
     password = request.GET.get("password", "NULL")
-    user = person.objects.all()
+    user = list(person.objects.all())
     isPresent = False
     for u in user:
         if (u.email == email) and (u.password == password):
@@ -25,10 +25,7 @@ def getUser(request):
             last_name = u.last_name
             isPresent = True
             user_id = u.user_id
-        else:
-            first_name = "NULL"
-            last_name = "NULL"
-
+  
     return JsonResponse({'user_id':user_id,'first_name': first_name, 'last_name': last_name, 'email': email,
                          'isPresent': isPresent})
 @api_view(["GET"])

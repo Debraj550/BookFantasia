@@ -19,7 +19,7 @@ const PostedBooks = () => {
       })
       .catch((err) => console.log(err));
   };
-  return <div className="posted-books-container container">Hello</div>;
+  return <div className="posted-books-container container">{postedBooks}</div>;
 };
 
 export default PostedBooks;

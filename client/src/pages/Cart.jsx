@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "../styles/cart.css";
 import axios from "../api/axios";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [show, setShow] = useState(false);
@@ -11,23 +12,32 @@ const Cart = () => {
   const url = "/api/get_cart/";
   const getBookUrl = "/api/get_books/";
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
-  const deleteUrl = "api/delete_cart/";
+  const deleteUrl = "/api/delete_cart/";
   const userId = window.localStorage.getItem("userId");
-  const [cartData, setCartData] = useState();
+
+  const [cartData, setCartData] = useState([
+    {
+      book_id: "",
+      book_name: "",
+      book_img: "",
+      price: "",
+      quantity: "",
+    },
+  ]);
   const [errors, setErrors] = useState();
   const [bookImg, setBookImg] = useState();
   const [product, setProduct] = useState();
+  const [deleted, setDeleted] = useState(1);
 
   useEffect(() => {
     getCartData();
-  }, []);
+  }, [deleted]);
 
   const getBookData = async (bookId) => {
     await axios
       .get(getBookUrl, { params: { book_id: bookId } })
       .then((res) => {
         setProduct(res.data);
-        console.log(product);
       })
       .catch((err) => {
         console.log(err);
@@ -39,20 +49,24 @@ const Cart = () => {
       .get(url, { params: { user_id: userId } })
       .then((res) => {
         setCartData(res.data);
-        //console.log(res.data);
       })
       .catch((err) => {
         setErrors(err);
         console.log(err);
       });
   };
+  //cartData && console.log("cartdata", cartData);
 
   const deleteItem = (book_id) => {
     axios
-      .delete(deleteUrl, {
-        params: { user_id: userId, book_id: book_id },
+      .delete(deleteUrl, { params: { user_id: userId, book_id: book_id } })
+      .then((res) => {
+        console.log("Deletion successfull.");
+        window.location.reload();
       })
-      .then((res) => console.log(res));
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="cart">
@@ -65,7 +79,7 @@ const Cart = () => {
                   <thead>
                     <tr>
                       <th scope="col" className="border-0 bg-light">
-                        <div className="p-2 px-3 text-uppercase">Product</div>
+                        <div className="text-uppercase">Product</div>
                       </th>
                       <th scope="col" className="border-0 bg-light">
                         <div className="py-2 text-uppercase">Price</div>
@@ -84,37 +98,42 @@ const Cart = () => {
                         <tr key={data.id}>
                           <th scope="row" className="border-0">
                             <div className="p-2">
-                              <img
-                                src={`${imageDefaultPath}/default.jpg`}
-                                alt=""
-                                width="70"
-                                className="img-fluid rounded shadow-sm"
-                              />
-                              <div className="ms-3 d-inline-block align-middle">
-                                <h5 className="mb-0">
-                                  <a
-                                    href="#"
-                                    className="text-dark d-inline-block align-middle"
-                                  >
-                                    Book Name
-                                  </a>
-                                </h5>
-                              </div>
+                              <Link to={`/ProductPage/${data.book_id}`}>
+                                <img
+                                  src={`${imageDefaultPath}/${data.book_img}`}
+                                  alt=""
+                                  width="70"
+                                  className="img-fluid rounded shadow-sm"
+                                />
+                                <div className="ms-3 d-inline-block  overflow-scroll">
+                                  <h6 className="mb-0">
+                                    <a
+                                      href="#"
+                                      className="text-dark d-inline-block align-middle overflow-scroll"
+                                    >
+                                      {data.book_name.slice(0, 30)}
+                                    </a>
+                                  </h6>
+                                </div>
+                              </Link>
                             </div>
                           </th>
                           <td className="border-0 align-middle">
-                            <strong>$79.00</strong>
+                            <strong>₹{data.price * data.quantity}</strong>
                           </td>
                           <td className="border-0 align-middle">
                             <strong>{data.quantity}</strong>
                           </td>
                           <td className="border-0 align-middle">
-                            <a href="#" className="text-dark">
-                              <i
-                                onClick={deleteItem(data.book_id)}
-                                className="fa fa-trash"
-                              ></i>
-                            </a>
+                            <button
+                              onClick={() => {
+                                console.log(data.book_id);
+                                deleteItem(data.book_id);
+                              }}
+                              className="rounded-pill btn-dark  shadow-sm"
+                            >
+                              <i className="fa fa-trash"></i>
+                            </button>
                           </td>
                         </tr>
                       ))}
@@ -172,7 +191,7 @@ const Cart = () => {
             </div>
             <div className="col-lg-6">
               <div className="bg-light rounded-pill px-4 py-3 text-uppercase fw-bold">
-                Order summary{" "}
+                Order summary
               </div>
               <div className="p-4">
                 <p className="mb-4">
@@ -184,7 +203,7 @@ const Cart = () => {
                 <ul className="list-unstyled mb-4">
                   <li className="d-flex justify-content-between py-3 border-bottom">
                     <strong className="text-muted">Order Subtotal </strong>
-                    <strong>$390.00</strong>
+                    <span>$390.00</span>
                   </li>
                   <li className="d-flex justify-content-between py-3 border-bottom">
                     <strong className="text-muted">
