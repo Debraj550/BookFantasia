@@ -15,7 +15,7 @@ const Cart = () => {
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
   const deleteUrl = "/api/delete_cart/";
   const userId = window.localStorage.getItem("userId");
-
+  const [total, setTotal] = useState(0);
   const [cartData, setCartData] = useState([
     {
       book_id: "",
@@ -25,26 +25,25 @@ const Cart = () => {
       quantity: "",
     },
   ]);
-  const [errors, setErrors] = useState();
-  const [bookImg, setBookImg] = useState();
-  const [product, setProduct] = useState();
+
   const [deleted, setDeleted] = useState(1);
+  const [errors, setErrors] = useState();
 
   useEffect(() => {
     getCartData();
   }, [deleted]);
 
-  const getBookData = async (bookId) => {
-    await axios
-      .get(getBookUrl, { params: { book_id: bookId } })
-      .then((res) => {
-        setProduct(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  useEffect(() => {
+    getTotal();
+  }, [cartData]);
 
+  const getTotal = () => {
+    let sum = 0;
+    cartData.map((data) => {
+      sum += data.price * data.quantity;
+    });
+    setTotal(sum);
+  };
   const getCartData = async () => {
     const response = await axios
       .get(url, { params: { user_id: userId } })
@@ -63,11 +62,15 @@ const Cart = () => {
       .delete(deleteUrl, { params: { user_id: userId, book_id: book_id } })
       .then((res) => {
         console.log("Deletion successfull.");
-        window.location.reload();
+        setDeleted(!deleted);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleCheckout = () => {
+    console.log("Checkout");
   };
   return (
     <div className="">
@@ -126,7 +129,9 @@ const Cart = () => {
                               </div>
                             </th>
                             <td className="border-0 align-middle">
-                              <strong>₹{data.price * data.quantity}</strong>
+                              <strong id="price">
+                                ₹{data.price * data.quantity}
+                              </strong>
                             </td>
                             <td className="border-0 align-middle">
                               <strong>{data.quantity}</strong>
@@ -209,31 +214,21 @@ const Cart = () => {
                   </em>
                 </p>
                 <ul className="list-unstyled mb-4">
-                  <li className="d-flex justify-content-between py-3 border-bottom">
-                    <strong className="text-muted">Order Subtotal </strong>
-                    <span>$390.00</span>
+                  <li className="justify-content-between py-3 border-bottom">
+                    <strong className="text-muted">Order Total </strong>
                   </li>
-                  <li className="d-flex justify-content-between py-3 border-bottom">
-                    <strong className="text-muted">
-                      Shipping and handling
-                    </strong>
-                    <strong>$10.00</strong>
-                  </li>
-                  <li className="d-flex justify-content-between py-3 border-bottom">
-                    <strong className="text-muted">Tax</strong>
-                    <strong>$0.00</strong>
-                  </li>
-                  <li className="d-flex justify-content-between py-3 border-bottom">
-                    <strong className="text-muted">Total</strong>
-                    <h5 className="fw-bold">$400.00</h5>
+                  <li className="justify-content-between py-3 border-bottom">
+                    <strong className="text-black">₹{total}</strong>
                   </li>
                 </ul>
-                <a
-                  href="#"
-                  className="btn btn-dark rounded-pill py-2 d-md-block"
+                <button
+                  onClick={handleCheckout}
+                  className={`btn  btn-dark rounded-pill py-2 d-md-block ${
+                    cartData.length > 0 ? "enabled" : "disabled"
+                  }`}
                 >
                   Procceed to checkout
-                </a>
+                </button>
               </div>
             </div>
           </div>

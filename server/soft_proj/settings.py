@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'cart',
     'review' ,
     'purchase',
-    'pre_registration'
+    'pre_registration',
+    'django_extensions'
 ]
 APPEND_SLASH=False
 MIDDLEWARE = [
