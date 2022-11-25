@@ -38,12 +38,15 @@ const PostedBooks = () => {
       });
   };
   return (
-    <div className="posted-books-container">
-      <div className="container bg-light vh-100">random</div>
+    <div className="posted-books-container vh-100">
+      <div className="container bg-light lign-items-center m-auto">
+        <h3>Hi, {userName}</h3>
+        <h5 className="text-muted">List of books posted : </h5>
+      </div>
       <div className="container bg-light">
-        <Row className="text-center border ">
+        <Row className="text-center border border-radius-10 ">
           <Col scope="col" className="border-0 bg-light fw-bold">
-            <div className="text-uppercase">Product</div>
+            <div className="py-2 text-uppercase">Product</div>
           </Col>
           <Col></Col>
           <Col scope="col" className="border-0 bg-light fw-bold">
@@ -60,7 +63,7 @@ const PostedBooks = () => {
           postedBooks.map((book, k) => (
             <Row
               key={book.book_id}
-              className="align-items-center mt-2 mb-2 text-center border "
+              className="align-items-center mt-2 mb-2 text-center border p-2"
             >
               <Col>
                 <img
@@ -70,10 +73,10 @@ const PostedBooks = () => {
               </Col>
               <Col>
                 <Row className="fw-bold">{book.book_name}</Row>
-                <Row>{book.desc}</Row>
+                <Row className="text-muted">{book.desc}</Row>
               </Col>
-              <Col>{book.quantity}</Col>
-              <Col>₹{book.price}</Col>
+              <Col className="fw-bold">{book.quantity}</Col>
+              <Col className="fw-bold">₹{book.price}</Col>
               <Col>
                 <button
                   onClick={() => {
