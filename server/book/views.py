@@ -155,6 +155,6 @@ def update_book(request):
 
 @api_view(["DELETE"])
 def delete_book(request):
-    book_id=request.DELETE.get('book_id')
+    book_id=request.GET.get('book_id')
     book.objects.filter(book_id=book_id).delete()
     return JsonResponse(200, safe=False)
