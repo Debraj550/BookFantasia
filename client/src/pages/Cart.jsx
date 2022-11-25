@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import "../styles/cart.css";
 import axios from "../api/axios";
 import { Link } from "react-router-dom";
+import { Alert } from "react-bootstrap";
 
 const Cart = () => {
   const [show, setShow] = useState(false);
@@ -69,76 +70,83 @@ const Cart = () => {
       });
   };
   return (
-    <div className="cart">
+    <div className="">
       <section className="py-5">
-        <div className="container px-4 px-lg-5 my-5">
+        <div className="cart-container container px-4 px-lg-5 my-5">
           <div className="row">
             <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
               <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th scope="col" className="border-0 bg-light">
-                        <div className="text-uppercase">Product</div>
-                      </th>
-                      <th scope="col" className="border-0 bg-light">
-                        <div className="py-2 text-uppercase">Price</div>
-                      </th>
-                      <th scope="col" className="border-0 bg-light">
-                        <div className="py-2 text-uppercase">Quantity</div>
-                      </th>
-                      <th scope="col" className="border-0 bg-light">
-                        <div className="py-2 text-uppercase">Remove</div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cartData &&
-                      cartData.map((data, k) => (
-                        <tr key={data.id}>
-                          <th scope="row" className="border-0">
-                            <div className="p-2">
-                              <Link to={`/ProductPage/${data.book_id}`}>
-                                <img
-                                  src={`${imageDefaultPath}/${data.book_img}`}
-                                  alt=""
-                                  width="70"
-                                  className="img-fluid rounded shadow-sm"
-                                />
-                                <div className="ms-3 d-inline-block  overflow-scroll">
-                                  <h6 className="mb-0">
-                                    <a
-                                      href="#"
-                                      className="text-dark d-inline-block align-middle overflow-scroll"
-                                    >
-                                      {data.book_name.slice(0, 30)}
-                                    </a>
-                                  </h6>
-                                </div>
-                              </Link>
-                            </div>
-                          </th>
-                          <td className="border-0 align-middle">
-                            <strong>₹{data.price * data.quantity}</strong>
-                          </td>
-                          <td className="border-0 align-middle">
-                            <strong>{data.quantity}</strong>
-                          </td>
-                          <td className="border-0 align-middle">
-                            <button
-                              onClick={() => {
-                                console.log(data.book_id);
-                                deleteItem(data.book_id);
-                              }}
-                              className="rounded-pill btn-dark  shadow-sm"
-                            >
-                              <i className="fa fa-trash"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                {cartData.length === 0 && (
+                  <Alert variant="danger">
+                    No Itms are present in the cart
+                  </Alert>
+                )}
+                {cartData.length > 0 && (
+                  <table className="table">
+                    <thead>
+                      <tr>
+                        <th scope="col" className="border-0 bg-light">
+                          <div className="text-uppercase">Product</div>
+                        </th>
+                        <th scope="col" className="border-0 bg-light">
+                          <div className="py-2 text-uppercase">Price</div>
+                        </th>
+                        <th scope="col" className="border-0 bg-light">
+                          <div className="py-2 text-uppercase">Quantity</div>
+                        </th>
+                        <th scope="col" className="border-0 bg-light">
+                          <div className="py-2 text-uppercase">Remove</div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cartData &&
+                        cartData.map((data, k) => (
+                          <tr key={data.id}>
+                            <th scope="row" className="border-0">
+                              <div className="p-2">
+                                <Link to={`/ProductPage/${data.book_id}`}>
+                                  <img
+                                    src={`${imageDefaultPath}/${data.book_img}`}
+                                    alt=""
+                                    width="70"
+                                    className="img-fluid rounded shadow-sm"
+                                  />
+                                  <div className="ms-3 d-inline-block  overflow-scroll">
+                                    <h6 className="mb-0">
+                                      <a
+                                        href="#"
+                                        className="text-dark d-inline-block align-middle overflow-scroll"
+                                      >
+                                        {data.book_name.slice(0, 30)}
+                                      </a>
+                                    </h6>
+                                  </div>
+                                </Link>
+                              </div>
+                            </th>
+                            <td className="border-0 align-middle">
+                              <strong>₹{data.price * data.quantity}</strong>
+                            </td>
+                            <td className="border-0 align-middle">
+                              <strong>{data.quantity}</strong>
+                            </td>
+                            <td className="border-0 align-middle">
+                              <button
+                                onClick={() => {
+                                  console.log(data.book_id);
+                                  deleteItem(data.book_id);
+                                }}
+                                className="rounded-pill btn-dark  shadow-sm"
+                              >
+                                <i className="fa fa-trash"></i>
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                )}
               </div>
             </div>
           </div>

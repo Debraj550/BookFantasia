@@ -1,4 +1,3 @@
-.cart-page {
-  min-height: 90vh;
-  height: 100%;
+.cart-container {
+  background-color: #eee;
 }
