@@ -1,3 +1,11 @@
 .posted-books-container {
   align-items: center;
 }
+
+.remove-posted-btn {
+  transition: transform 0.5s;
+}
+
+.remove-posted-btn:hover {
+  transform: scale(1.2);
+}

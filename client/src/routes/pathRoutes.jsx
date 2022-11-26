@@ -11,6 +11,7 @@ import ProductPage from "../pages/ProductPage";
 import Slider from "../componenets/Slider/Slider";
 import Orders from "../pages/Orders";
 import PostedBooks from "../pages/PostedBooks";
+import CheckoutForm from "../componenets/CheckoutForm";
 
 const PathRoutes = () => {
   const isLoggedin = window.localStorage.getItem("token");
@@ -30,6 +31,7 @@ const PathRoutes = () => {
       <Route exact path="/posted_books" element={<PostedBooks />}></Route>
       <Route exact path="/signin" element={<Signin />}></Route>
       <Route exact path="/signout" element={<Signout />}></Route>
+      <Route exact path="/checkout" element={<CheckoutForm />}></Route>
       <Route
         exact
         path="/SellBook"

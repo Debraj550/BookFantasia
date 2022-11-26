@@ -3,10 +3,16 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "../styles/cart.css";
 import axios from "../api/axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Alert } from "react-bootstrap";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js/pure";
+import CheckoutForm from "../componenets/CheckoutForm";
 
 const Cart = () => {
+  const stripePromise = loadStripe(
+    "pk_live_51M81BjSB2nZihmDBToEMRBlOcVXrvi56TDCyDHAj8f3XhFaJTvrzqGezUg4xemYgYSh1N56jDSXR8L6hCZpsBMG4005l0XlWvw"
+  );
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,6 +22,7 @@ const Cart = () => {
   const deleteUrl = "/api/delete_cart/";
   const userId = window.localStorage.getItem("userId");
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
   const [cartData, setCartData] = useState([
     {
       book_id: "",
@@ -70,7 +77,7 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
-    console.log("Checkout");
+    console.log("working");
   };
   return (
     <div className="">
@@ -96,6 +103,9 @@ const Cart = () => {
                         </th>
                         <th scope="col" className="border-0 bg-light">
                           <div className="py-2 text-uppercase">Quantity</div>
+                        </th>
+                        <th scope="col" className="border-0 bg-light">
+                          <div className="py-2 text-uppercase">Subtotal</div>
                         </th>
                         <th scope="col" className="border-0 bg-light">
                           <div className="py-2 text-uppercase">Remove</div>
@@ -129,12 +139,13 @@ const Cart = () => {
                               </div>
                             </th>
                             <td className="border-0 align-middle">
-                              <strong id="price">
-                                ₹{data.price * data.quantity}
-                              </strong>
+                              <strong id="price">₹{data.price}</strong>
                             </td>
                             <td className="border-0 align-middle">
                               <strong>{data.quantity}</strong>
+                            </td>
+                            <td className="border-0 align-middle">
+                              <strong>₹{data.price * data.quantity}</strong>
                             </td>
                             <td className="border-0 align-middle">
                               <button
@@ -177,9 +188,12 @@ const Cart = () => {
                     <button
                       id="button-addon3"
                       type="button"
-                      className="btn btn-dark px-4 rounded-pill"
+                      className={`btn btn-dark px-4 rounded-pill ${
+                        cartData.length > 0 ? "enabled" : "disabled"
+                      }`}
                     >
-                      <i className="fa fa-gift mr-2"></i>Apply coupon
+                      <i className={`fa fa-gift mr-2`}></i>
+                      Apply coupon
                     </button>
                   </div>
                 </div>
@@ -221,14 +235,17 @@ const Cart = () => {
                     <strong className="text-black">₹{total}</strong>
                   </li>
                 </ul>
-                <button
-                  onClick={handleCheckout}
-                  className={`btn  btn-dark rounded-pill py-2 d-md-block ${
-                    cartData.length > 0 ? "enabled" : "disabled"
-                  }`}
-                >
-                  Procceed to checkout
-                </button>
+
+                <Elements stripe={stripePromise}>
+                  <button
+                    onClick={handleCheckout}
+                    className={`btn  btn-dark rounded-pill py-2 d-md-block ${
+                      cartData.length > 0 ? "enabled" : "disabled"
+                    }`}
+                  >
+                    Procceed to checkout
+                  </button>
+                </Elements>
               </div>
             </div>
           </div>

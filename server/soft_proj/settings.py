@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'review' ,
     'purchase',
     'pre_registration',
-    'django_extensions'
+    'django_extensions',
+    'payments.apps.PaymentsConfig',
 ]
 APPEND_SLASH=False
 MIDDLEWARE = [
