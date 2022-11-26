@@ -88,7 +88,15 @@ const Cart = () => {
               <div className="table-responsive">
                 {cartData.length === 0 && (
                   <Alert variant="danger">
-                    No Itms are present in the cart
+                    No items are present in the cart. Kindly{" "}
+                    <Link
+                      className="fw-bold"
+                      style={{ textDecoration: "none" }}
+                      to="/Sellbook"
+                    >
+                      click here
+                    </Link>{" "}
+                    to go back to home page and start shopping.
                   </Alert>
                 )}
                 {cartData.length > 0 && (

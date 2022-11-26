@@ -16,11 +16,12 @@
   height: 50px;
 }
 .card-image {
-  overflow: hidden;
-  height: 22rem;
+  overflow: scroll;
+  height: 15rem;
 }
 
-.card-row {
+.card-col {
   margin-top: 1rem;
   margin-bottom: 2rem;
+  width: 14rem;
 }

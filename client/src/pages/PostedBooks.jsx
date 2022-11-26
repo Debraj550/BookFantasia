@@ -39,7 +39,7 @@ const PostedBooks = () => {
       });
   };
   return (
-    <div className="posted-books-container vh-100">
+    <div className="posted-books-container vh-100  container px-4 px-lg-5 my-5">
       <div className="container bg-light lign-items-center m-auto">
         <h3>Hi, {userName}</h3>
         <h5 className="text-muted">List of books posted : </h5>

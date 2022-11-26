@@ -6,11 +6,28 @@ import { Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import axios from "../api/axios";
+import ProductCategory from "./catergory/ProductCategory";
 
 const Header = () => {
+  const url = "/api/get_books/";
   const isLoggedin = window.localStorage.getItem("token");
   const userName = window.localStorage.getItem("userName");
   const navigate = useNavigate();
+  const [searchVal, setSearchVal] = useState("");
+  const [searchedData, setSearchedData] = useState();
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleSearch = () => {
+    setSearchVal("");
+    navigate(`/search/${searchVal}`);
+  };
+
   const userSignout = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("userName");
@@ -27,10 +44,13 @@ const Header = () => {
         <div className="search-bar">
           <input
             type="text"
+            value={searchVal}
+            onChange={(e) => setSearchVal(e.target.value)}
             className="col-md-12"
             placeholder="Search books"
+            onKeyDown={handleKeyDown}
           ></input>
-          <button className="btn-xm search-btn">
+          <button onClick={handleSearch} className="btn-xm search-btn">
             <i className="fa fa-search"></i>
           </button>
         </div>

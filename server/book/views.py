@@ -11,8 +11,6 @@ from rest_framework.decorators import api_view
 from django.http import *
 
 from soft_proj.settings import BASE_DIR
-
-
 # Create your views here.
 @api_view(["GET"])
 def books(request):
@@ -35,6 +33,35 @@ def books(request):
         data = list(data.values())
         #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
+        
+    cond = request.GET.get("search", 'NULL')
+    if (cond != "NULL"):
+        cond=cond.lower()
+        cond=str(cond)
+        data = book.objects.all().values()
+        #print(data)
+        temp = []
+        for books in data:
+            #print("books['book_name'].lower()=>",type(books['book_name'].lower()),"  and " ,cond in books['book_name'].split(" "))
+            if(books['author_name'].lower().find(cond) != -1 or books['book_name'].lower().find(cond) != -1 or books['desc'].lower().find(cond) != -1):
+                bk_id=int(books['book_id'])
+                searched_book=book.objects.filter(book_id=bk_id)
+                searched_book=list(searched_book.values())
+                temp.append(searched_book)  
+
+        size = len(temp)
+        if (size == 0):
+            return JsonResponse([], safe =False)
+
+        x = []
+        for i in range(size):
+            x.append(temp[i][0])
+        print(x)
+        return JsonResponse(x, safe=False)
+        
+
+        #data = serializers.serialize('json', queryed_book)
+
     cond = request.GET.get("author_name", 'NULL')
     if (cond != "NULL"):
         data = book.objects.filter(author_name=cond)
@@ -59,6 +86,7 @@ def books(request):
         #print("base dir path",BASE_DIR)
         #data = serializers.serialize('json',queryed_book )
         return JsonResponse(data,safe=False)
+
 @api_view(["POST"])
 def upload_books(request):
     #book_id = request.POST.get("book_id")

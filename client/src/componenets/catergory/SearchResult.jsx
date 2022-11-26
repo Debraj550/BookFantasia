@@ -8,24 +8,24 @@ import { useState } from "react";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { NavLink } from "react-bootstrap";
 
-const ProductCategory = () => {
+const SearchResult = () => {
   const url = "/api/get_books/";
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
-  const { category } = useParams();
+  const { search } = useParams();
   //const category = parseInt(param);
   const [productData, setProductData] = useState();
   const [errors, setErrors] = useState();
 
   useEffect(() => {
     getProductData();
-  }, [category]);
+  }, [search]);
 
   const getProductData = async () => {
     await axios
-      .get(url, { params: { category: category } })
+      .get(url, { params: { search: search } })
       .then((res) => {
         setProductData(res.data);
-        //console.log(res.data);
+        //console.log(res.data[0]);
       })
       .catch((err) => {
         setErrors(err);
@@ -37,13 +37,14 @@ const ProductCategory = () => {
     <div className="product-page">
       <Container>
         <h3 className="m-3">
-          <Badge bg="primary">{category && category.toUpperCase()}</Badge>
+          <Badge bg="primary">{search && search.toUpperCase()}</Badge>
         </h3>
         <Row>
+          {console.log(productData)}
           {productData &&
             productData.map((product, k) => (
               <Col
-                className="card-col"
+                className="card-row"
                 key={product.book_id}
                 xs={12}
                 md={4}
@@ -74,4 +75,4 @@ const ProductCategory = () => {
   );
 };
 
-export default ProductCategory;
+export default SearchResult;
