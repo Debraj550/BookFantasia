@@ -23,6 +23,7 @@ const Cart = () => {
   const userId = window.localStorage.getItem("userId");
   const [total, setTotal] = useState(0);
   const navigate = useNavigate();
+
   const [cartData, setCartData] = useState([
     {
       book_id: "",
@@ -82,7 +83,10 @@ const Cart = () => {
   return (
     <div className="">
       <section className="py-5">
-        <div className="cart-container container px-4 px-lg-5 my-5">
+        <div className="container text-center text-white fw-bolder px-4 bg-danger">
+          <h4>Cart</h4>
+        </div>
+        <div className="cart-container container px-4 px-lg-5 mb-5">
           <div className="row">
             <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
               <div className="table-responsive">
@@ -92,7 +96,7 @@ const Cart = () => {
                     <Link
                       className="fw-bold"
                       style={{ textDecoration: "none" }}
-                      to="/Sellbook"
+                      to="/Home"
                     >
                       click here
                     </Link>{" "}
@@ -104,7 +108,7 @@ const Cart = () => {
                     <thead>
                       <tr>
                         <th scope="col" className="border-0 bg-light">
-                          <div className="text-uppercase">Product</div>
+                          <div className="py-2 text-uppercase">Product</div>
                         </th>
                         <th scope="col" className="border-0 bg-light">
                           <div className="py-2 text-uppercase">Price</div>
@@ -123,23 +127,26 @@ const Cart = () => {
                     <tbody>
                       {cartData &&
                         cartData.map((data, k) => (
-                          <tr key={data.id}>
+                          <tr key={k}>
                             <th scope="row" className="border-0">
-                              <div className="p-2">
-                                <Link to={`/ProductPage/${data.book_id}`}>
+                              <div className="text-wrap p-2">
+                                <Link
+                                  className="d-flex gap-4 align-items-center"
+                                  to={`/ProductPage/${data.book_id}`}
+                                >
                                   <img
                                     src={`${imageDefaultPath}/${data.book_img}`}
                                     alt=""
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
                                   />
-                                  <div className="ms-3 d-inline-block  overflow-scroll">
-                                    <h6 className="mb-0">
+                                  <div className="">
+                                    <h6>
                                       <a
                                         href="#"
-                                        className="text-dark d-inline-block align-middle overflow-scroll"
+                                        className="text-dark text-wrap w-70"
                                       >
-                                        {data.book_name.slice(0, 30)}
+                                        {data.book_name}
                                       </a>
                                     </h6>
                                   </div>
@@ -244,21 +251,40 @@ const Cart = () => {
                   </li>
                 </ul>
 
-                <Elements stripe={stripePromise}>
-                  <button
-                    onClick={handleCheckout}
-                    className={`btn  btn-dark rounded-pill py-2 d-md-block ${
-                      cartData.length > 0 ? "enabled" : "disabled"
-                    }`}
-                  >
-                    Procceed to checkout
-                  </button>
-                </Elements>
+                <button
+                  onClick={handleShow}
+                  className={`btn  btn-dark rounded-pill py-2 d-md-block ${
+                    cartData.length > 0 ? "enabled" : "disabled"
+                  }`}
+                >
+                  Procceed to checkout
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Checkout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Elements stripe={stripePromise}>
+            <CheckoutForm price={{ total }} />
+          </Elements>
+        </Modal.Body>
+        <Modal.Footer className="d-flex justify-content-center">
+          <Button variant="secondary" onClick={handleClose}>
+            Go Back
+          </Button>
+          <Button variant="primary">Submit</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

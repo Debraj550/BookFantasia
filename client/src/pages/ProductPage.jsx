@@ -135,15 +135,19 @@ const ProductPage = () => {
               />
               <br />
               <div className="add-cart-buttons">
-                <button onClick={addToCart} className="btn btn-primary">
+                <button onClick={addToCart} className="btn btn-primary fw-bold">
                   Add to Cart
                 </button>
 
-                <NavLink to={`/Cart`}>
-                  <button onClick={addToCart} className="btn btn-primary">
+                <button onClick={addToCart} className="btn btn-primary">
+                  <NavLink
+                    className="text-white fw-bold"
+                    style={{ textDecoration: "none" }}
+                    to={`/Cart`}
+                  >
                     Buy Now
-                  </button>
-                </NavLink>
+                  </NavLink>
+                </button>
               </div>
             </div>
           </Col>

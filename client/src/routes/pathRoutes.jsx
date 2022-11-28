@@ -25,7 +25,11 @@ const PathRoutes = () => {
         <Route path="" element={<Slider />}></Route>
         <Route path=":category" element={<ProductCategory />}></Route>
       </Route>
-      <Route path="/search/:search" element={<SearchResult />}></Route>
+      <Route
+        exact
+        path="/Home/search/:search"
+        element={<SearchResult />}
+      ></Route>
       <Route path="/Productpage/:book_id" element={<ProductPage />}></Route>
       <Route exact path="/signup" element={<Signup />}></Route>
       <Route exact path="/orders" element={<Orders />}></Route>

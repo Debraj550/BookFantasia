@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.core import serializers
 from .models import *
+
 @api_view(["GET","POST"])
 def get_cart(request):
     cond = request.GET.get('user_id', 'NULL')

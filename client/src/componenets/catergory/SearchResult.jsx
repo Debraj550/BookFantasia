@@ -37,20 +37,20 @@ const SearchResult = () => {
     <div className="product-page">
       <Container>
         <h3 className="m-3">
-          <Badge bg="primary">{search && search.toUpperCase()}</Badge>
+          <Badge bg="primary">{`Search results for "${search}"`}</Badge>
         </h3>
-        <Row>
+        <Row className="bg-light">
           {console.log(productData)}
           {productData &&
             productData.map((product, k) => (
               <Col
-                className="card-row"
+                className="card-col py-2"
                 key={product.book_id}
                 xs={12}
                 md={4}
                 lg={2}
               >
-                <Card className="neon-effect card-container">
+                <Card className="neon-effect card-container ">
                   <Link to={`/ProductPage/${product.book_id}`}>
                     <Card.Img
                       className="card-image"
@@ -61,7 +61,7 @@ const SearchResult = () => {
                     <Card.Title className="card-title">
                       {product.book_name}
                     </Card.Title>
-                    <Card.Text>{product.price}</Card.Text>
+                    <Card.Text>₹{product.price}</Card.Text>
                     <Button className="col-md-12 d-flex center">
                       Add to cart
                     </Button>

@@ -1,12 +1,14 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState } from "react";
-import StripeCheckout from "react-stripe-checkout";
-const CheckoutForm = () => {
+import { ApiService } from "../api/axios.jsx";
+
+const CheckoutForm = (props) => {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-  // Handle real-time validation errors from the CardElement.
+
+  // Handle real-time validation errors from the card Element.
   const handleChange = (event) => {
     if (event.error) {
       setError(event.error.message);
@@ -14,12 +16,34 @@ const CheckoutForm = () => {
       setError(null);
     }
   };
+
   // Handle form submission.
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const card = elements.getElement(CardElement);
+
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
+      type: "card",
+      card: card,
+    });
+    console.log(paymentMethod);
+
+    if (error) {
+      setError(error.response.data);
+    } else {
+      ApiService.saveStripeInfo({ email, payment_method_id: paymentMethod.id })
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
+
   return (
     <form onSubmit={handleSubmit} className="stripe-form">
+      <h3>{props.price.total}</h3>
       <div className="form-row">
         <label htmlFor="email">Email Address</label>
         <input
@@ -36,7 +60,8 @@ const CheckoutForm = () => {
         />
       </div>
       <div className="form-row">
-        <label for="card-element">Credit or debit card</label>
+        <label htmlFor="card-element">Credit or debit card</label>
+
         <CardElement id="card-element" onChange={handleChange} />
         <div className="card-errors" role="alert">
           {error}

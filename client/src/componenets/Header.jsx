@@ -25,7 +25,7 @@ const Header = () => {
 
   const handleSearch = () => {
     setSearchVal("");
-    navigate(`/search/${searchVal}`);
+    navigate(`/Home/search/${searchVal}`);
   };
 
   const userSignout = () => {
@@ -77,8 +77,13 @@ const Header = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={userSignout}>Sign Out</Dropdown.Item>
-                  <Dropdown.Item href="/orders">
+                  <Dropdown.Item
+                    className="text-danger fw-bold text-center"
+                    onClick={userSignout}
+                  >
+                    Sign Out
+                  </Dropdown.Item>
+                  <Dropdown.Item className="fw-bold text-center" href="/orders">
                     <Link
                       style={{ color: "inherit", textDecoration: "none" }}
                       to="/orders"
@@ -86,7 +91,7 @@ const Header = () => {
                       My Orders
                     </Link>
                   </Dropdown.Item>
-                  <Dropdown.Item>
+                  <Dropdown.Item className="fw-bold text-center">
                     <Link
                       style={{ color: "inherit", textDecoration: "none" }}
                       to="/posted_books"
