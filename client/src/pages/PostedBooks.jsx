@@ -14,6 +14,10 @@ const PostedBooks = () => {
   const [deleted, setDeleted] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     getPostedBooks();
   }, [deleted]);
 

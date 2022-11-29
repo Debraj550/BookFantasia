@@ -24,6 +24,10 @@ const SellBook = () => {
     price: 0,
   });
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleChange = (event) => {
     const newBookData = { ...bookData };
     newBookData[event.target.id] = event.target.value;

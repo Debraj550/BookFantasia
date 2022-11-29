@@ -34,26 +34,32 @@ def get_cart(request):
         temp["book_img"] = bookData[0]['book_img']
         temp["price"] = bookData[0]['price']
         temp["quantity"] = d['quantity']
-        print(temp)
+        #print(temp)
         book.append(temp)
     
     return JsonResponse(book, safe=False)
 
 @api_view(["POST"])
 def update_cart(request):
-    print(request.POST)
+    #print(request.POST)
     book_id = request.POST.get('book_id')
     user_id = request.POST.get('user_id')
-    quantity1 = request.POST.get('quantity')
+    quantity1 = int(request.POST.get('quantity'))
 
     try:
+        book_quantity = b.objects.filter(book_id = book_id).values()[0]['quantity']
         obj = cart_data.objects.filter(user_id=user_id).filter(book_id=book_id)
-        id=obj.values()[0]['id']
+        id=obj.values()[0]['cart_id']
         quantity=obj.values()[0]['quantity']
-        quantity+=quantity1
-        cart_data.objects.filter(id=id).update(quantity=quantity)
 
-    except :
+        quantity+=int(quantity1)
+        if quantity > book_quantity:
+            quantity = book_quantity
+        cart_data.objects.filter(cart_id=id).update(quantity=quantity)
+        print("try is complete")
+
+    except Exception as e: 
+        #print("output",e , "output")
         obj = cart_data.objects.create(user_id=user_id,book_id=book_id,quantity=quantity1)
     return JsonResponse(200, safe=False)
 

@@ -20,6 +20,9 @@ const ProductPage = () => {
   const userId = window.localStorage.getItem("userId");
   const [amount, setAmount] = useState(1);
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getSingleProduct = async () => {
     await axios
