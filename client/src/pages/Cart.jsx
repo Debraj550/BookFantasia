@@ -14,8 +14,6 @@ const Cart = () => {
     "pk_live_51M81BjSB2nZihmDBToEMRBlOcVXrvi56TDCyDHAj8f3XhFaJTvrzqGezUg4xemYgYSh1N56jDSXR8L6hCZpsBMG4005l0XlWvw"
   );
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const url = "/api/get_cart/";
   const getBookUrl = "/api/get_books/";
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
@@ -47,6 +45,12 @@ const Cart = () => {
   useEffect(() => {
     getTotal();
   }, [cartData]);
+
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
+  const handleShow = () => setShow(true);
 
   const getTotal = () => {
     let sum = 0;
@@ -80,9 +84,6 @@ const Cart = () => {
       });
   };
 
-  const handleCheckout = () => {
-    console.log("working");
-  };
   return (
     <div className="">
       <section className="py-5">
@@ -274,18 +275,19 @@ const Cart = () => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Checkout</Modal.Title>
+          <Modal.Title className="fw-bold bg-light text-dark w-100 text-center rounded-pill">
+            Checkout
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Elements stripe={stripePromise}>
-            <CheckoutForm price={{ total }} />
+            <CheckoutForm price={{ total }} data={{ cartData }} />
           </Elements>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
           <Button variant="secondary" onClick={handleClose}>
             Go Back
           </Button>
-          <Button variant="primary">Submit</Button>
         </Modal.Footer>
       </Modal>
     </div>

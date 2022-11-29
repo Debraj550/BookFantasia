@@ -74,4 +74,15 @@ def delete_cart(request):
     #cart_data.objects.filter(book_id=book_id).filter(user_id=user_id).delete()
     return JsonResponse("Deleted sucessfully", safe=False)
 
+@api_view(["DELETE"])
+def empty_cart(request):
+    user_id = request.GET.get('user_id')
+    record = cart_data.objects.filter(user_id = user_id)
+    record.delete()
+    #user_id=request.DELETE.get('user_id')
+    #book_id=request.DELETE.get('book_id')
+    #cart_data.objects.filter(book_id=book_id).filter(user_id=user_id).delete()
+    return JsonResponse("Deleted sucessfully", safe=False)
+
+
 

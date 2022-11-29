@@ -19,12 +19,14 @@ import payments
 from django.contrib import admin
 from django.urls import path, include 
 from django.urls import *
+
 urlpatterns = [
     path("",include("book.url")),
     path("",include("pre_registration.url")),
     path("",include("cart.url")),
     path("",include("user_detail.url")),
     path("",include("review.url")),
+    path("", include('purchase.url')),
     path('admin/', admin.site.urls),
     path("", include('payments.urls'))
 ]
