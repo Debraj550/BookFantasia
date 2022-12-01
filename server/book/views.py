@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.core import serializers
 from .models import *
-
+import user_detail.models as p
 from .serializers import *
 from rest_framework.decorators import api_view
 from django.http import *
@@ -14,12 +14,16 @@ from soft_proj.settings import BASE_DIR
 # Create your views here.
 @api_view(["GET"])
 def books(request):
-
     cond=request.GET.get("book_id",'NULL')
     if(cond!="NULL"):
         data = book.objects.filter(book_id=cond)
         data = list(data.values())
-        #data = serializers.serialize('json', queryed_book)
+        user_id = data[0]['user_id']
+        user_details = list(p.person.objects.filter(user_id=user_id).values())
+        name = user_details[0]['first_name']+' '+user_details[0]['last_name']
+        data = data[0]
+        data["seller_name"] = name
+        #data.append("seller_name", user_details[0]['first_name']+user_details[0]['last_name'])
         return JsonResponse(data, safe=False)
     cond=request.GET.get("user_id",'NULL')
     if(cond!="NULL"):
@@ -80,12 +84,12 @@ def books(request):
         data = list(data.values())
         #data = serializers.serialize('json', queryed_book)
         return JsonResponse(data, safe=False)
-    else:
-        data = book.objects.all()
-        data = list(data.values())
+    
+    data = book.objects.all()
+    data = list(data.values())
         #print("base dir path",BASE_DIR)
         #data = serializers.serialize('json',queryed_book )
-        return JsonResponse(data,safe=False)
+    return JsonResponse(data,safe=False)
 
 @api_view(["POST"])
 def upload_books(request):

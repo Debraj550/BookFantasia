@@ -90,11 +90,17 @@ const PostedBooks = () => {
                   <img
                     src={`${imageDefaultPath}/${book.book_img}`}
                     width="100"
+                    height="130"
+                    className="shadow border-2 bg-dark"
                   ></img>
                 </Col>
                 <Col>
-                  <Row className="fw-bold text-uppercase">{book.book_name}</Row>
-                  <Row className="text-muted text-start">{book.desc}</Row>
+                  <Row className="fw-bold text-uppercase text-start">
+                    {book.book_name}
+                  </Row>
+                  <Row className="text-muted text-start">
+                    {book.desc.slice(0, 100)}
+                  </Row>
                 </Col>
                 <Col className="fw-bold">{book.quantity}</Col>
                 <Col className="fw-bold">₹{book.price}</Col>

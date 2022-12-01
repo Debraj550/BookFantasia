@@ -17,6 +17,10 @@ const ProductCategory = () => {
   const [errors, setErrors] = useState();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     getProductData();
   }, [category]);
 
@@ -57,10 +61,14 @@ const ProductCategory = () => {
                     />
                   </Link>
                   <Card.Body>
-                    <Card.Title className="card-title">
+                    <Card.Title className="home-card-title px-2 text-wrap">
                       {product.book_name}
                     </Card.Title>
-                    <Card.Text>₹{product.price}</Card.Text>
+                    <hr></hr>
+                    <Card.Text className="fw-bold">
+                      {product.quantity ? "In Stock" : "Not in stock"}
+                      <br />₹{product.price}
+                    </Card.Text>
                     <Button className="col-md-12 d-flex center">
                       Add to cart
                     </Button>

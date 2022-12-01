@@ -95,11 +95,16 @@ const Slider = () => {
                         src={`${imageDefaultPath}/${book.book_img}`}
                       />
                     </Link>
+
                     <Card.Body>
-                      <Card.Title className="home-card-title">
+                      <Card.Title className="home-card-title px-2 text-wrap">
                         {book.book_name}
                       </Card.Title>
-                      <Card.Text>₹{book.price}</Card.Text>
+                      <hr></hr>
+                      <Card.Text className="fw-bold">
+                        {book.quantity ? "In Stock" : "Not in stock"}
+                        <br />₹{book.price}
+                      </Card.Text>
                       <Button className="col-md-12 d-flex center">
                         Add to cart
                       </Button>
@@ -134,10 +139,14 @@ const Slider = () => {
                       />
                     </Link>
                     <Card.Body>
-                      <Card.Title className="home-card-title">
+                      <Card.Title className="home-card-title px-2 text-wrap">
                         {book.book_name}
                       </Card.Title>
-                      <Card.Text>₹{book.price}</Card.Text>
+                      <hr></hr>
+                      <Card.Text className="fw-bold">
+                        {book.quantity ? "In Stock" : "Not in stock"}
+                        <br />₹{book.price}
+                      </Card.Text>
                       <Button className="col-md-12 d-flex center">
                         Add to cart
                       </Button>
@@ -199,10 +208,14 @@ const Slider = () => {
                       />
                     </Link>
                     <Card.Body>
-                      <Card.Title className="home-card-title">
+                      <Card.Title className="home-card-title px-2 text-wrap">
                         {book.book_name}
                       </Card.Title>
-                      <Card.Text>₹{book.price}</Card.Text>
+                      <hr></hr>
+                      <Card.Text className="fw-bold">
+                        {book.quantity ? "In Stock" : "Not in stock"}
+                        <br />₹{book.price}
+                      </Card.Text>
                       <Button className="col-md-12 d-flex center">
                         Add to cart
                       </Button>

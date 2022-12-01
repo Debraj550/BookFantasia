@@ -36,7 +36,6 @@
 .product {
   display: flex;
   flex-direction: row;
-  background-color: blanchedalmond;
 }
 .bookname {
   color: black;
@@ -94,7 +93,7 @@
   transition: transform 0.2s;
 }
 .book-img-item:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .add-cart-buttons {

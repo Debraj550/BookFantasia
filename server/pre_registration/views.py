@@ -29,9 +29,13 @@ def get_registration(request):
 def update_registration(request):
     book_id = request.POST.get('book_id')
     user_id = request.POST.get('user_id')
-    record=registration(book_id=book_id,user_id=user_id)
-    record.save()
-    return JsonResponse(200, safe=False)
+    record=list(registration.objects.filter(user_id=user_id).filter(book_id=book_id).values())
+    print("record - ",len(record))
+    if(len(record) == 0):
+        registration.objects.create(user_id=user_id, book_id=book_id).save()
+        return JsonResponse(200, safe=False)
+    print("Already pre ordered.")
+    return JsonResponse("Already exists", safe=False)
 
 
 

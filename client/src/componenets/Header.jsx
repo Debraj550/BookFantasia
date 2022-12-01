@@ -2,12 +2,15 @@ import React from "react";
 import "../styles/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import axios from "../api/axios";
 import ProductCategory from "./catergory/ProductCategory";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { useEffect } from "react";
 
 const Header = () => {
   const url = "/api/get_books/";
@@ -16,11 +19,29 @@ const Header = () => {
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
   const [searchedData, setSearchedData] = useState();
+  const [cartData, setCartData] = useState([]);
+  const userId = window.localStorage.getItem("userId");
+  const [errors, setErrors] = useState();
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleSearch();
     }
+  };
+  useEffect(() => {
+    getCartData();
+  }, []);
+
+  const getCartData = async () => {
+    const response = await axios
+      .get(url, { params: { user_id: userId } })
+      .then((res) => {
+        setCartData(res.data);
+      })
+      .catch((err) => {
+        setErrors(err);
+        console.log(err);
+      });
   };
 
   const handleSearch = () => {
@@ -41,19 +62,26 @@ const Header = () => {
         <Link className="brand col-lg-2 col-md-2 col-sm-3" to="/">
           <i className="fa fa-book">BookFantasia </i>
         </Link>
-        <div className="search-bar">
+        <div class="input-group input-group-sm w-50">
           <input
             type="text"
             value={searchVal}
             onChange={(e) => setSearchVal(e.target.value)}
-            className="col-md-12"
             placeholder="Search books"
             onKeyDown={handleKeyDown}
-          ></input>
-          <button onClick={handleSearch} className="btn-xm search-btn">
-            <i className="fa fa-search"></i>
-          </button>
+            className="form-control"
+            aria-label="Search books"
+            aria-describedby="basic-addon2"
+          />
+          <div class="input-group-append">
+            <button
+              className="fa fa-search btn btn-danger"
+              onClick={handleSearch}
+              type="button"
+            ></button>
+          </div>
         </div>
+
         <ul>
           <li className="active ">
             <Link className="items" to="/Cart">
@@ -83,7 +111,7 @@ const Header = () => {
                   >
                     Sign Out
                   </Dropdown.Item>
-                  <Dropdown.Item className="fw-bold text-center" href="/orders">
+                  <Dropdown.Item className="fw-bold text-center">
                     <Link
                       style={{ color: "inherit", textDecoration: "none" }}
                       to="/orders"

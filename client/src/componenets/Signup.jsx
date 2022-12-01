@@ -82,10 +82,9 @@ const Signup = () => {
   };
   return (
     <section
+      className="h-100"
       style={{
         backgroundColor: bgColors.Yellow,
-        minHeight: "100vh",
-        height: 100,
       }}
     >
       {signedUp && (

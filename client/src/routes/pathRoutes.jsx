@@ -5,7 +5,6 @@ import Signup from "../componenets/Signup";
 import Cart from "../pages/Cart";
 import Home from "../pages/Home";
 import SellBook from "../pages/SellBook";
-import Signout from "../componenets/Signout";
 import ProductCategory from "../componenets/catergory/ProductCategory";
 import ProductPage from "../pages/ProductPage";
 import Slider from "../componenets/Slider/Slider";
@@ -35,7 +34,6 @@ const PathRoutes = () => {
       <Route exact path="/orders" element={<Orders />}></Route>
       <Route exact path="/posted_books" element={<PostedBooks />}></Route>
       <Route exact path="/signin" element={<Signin />}></Route>
-      <Route exact path="/signout" element={<Signout />}></Route>
       <Route exact path="/checkout" element={<CheckoutForm />}></Route>
       <Route
         exact

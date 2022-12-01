@@ -141,8 +141,8 @@ const Cart = () => {
                                   <img
                                     src={`${imageDefaultPath}/${data.book_img}`}
                                     alt=""
-                                    width="70"
-                                    className="img-fluid rounded shadow-sm"
+                                    width="100"
+                                    height="130"
                                   />
                                   <div className="">
                                     <h6>
