@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-
 from .models import *
 import json
 import sys
@@ -29,8 +28,20 @@ def get_registration(request):
     else:
         data = review.objects.all()
         data = list(data.values())
+    temp = []
+    for d in data: 
+        x = {}
+        user_id = d['user_id']
+        user = p.objects.get(user_id=user_id)
+        user_name = user.first_name + " " + user.last_name
+        x['id'] = d['id']
+        x['book_rating'] = d['book_rating']
+        x['review_description'] = d['review_description']
+        x['user_name'] = user_name
+        temp.append(x)
+    print(temp)
+    return JsonResponse(temp, safe=False)
 
-    return JsonResponse(data, safe=False)
 @api_view(["POST"])
 def update_review(request):
     book_id = request.POST.get('book_id',"NULL")

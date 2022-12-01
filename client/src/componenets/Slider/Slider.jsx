@@ -105,7 +105,10 @@ const Slider = () => {
                         {book.quantity ? "In Stock" : "Not in stock"}
                         <br />₹{book.price}
                       </Card.Text>
-                      <Button className="col-md-12 d-flex center">
+                      <Button
+                        className="col-md-12 d-flex center"
+                        disabled={book.quantity ? false : true}
+                      >
                         Add to cart
                       </Button>
                     </Card.Body>
@@ -147,7 +150,10 @@ const Slider = () => {
                         {book.quantity ? "In Stock" : "Not in stock"}
                         <br />₹{book.price}
                       </Card.Text>
-                      <Button className="col-md-12 d-flex center">
+                      <Button
+                        className="col-md-12 d-flex center"
+                        disabled={book.quantity ? false : true}
+                      >
                         Add to cart
                       </Button>
                     </Card.Body>
@@ -216,7 +222,10 @@ const Slider = () => {
                         {book.quantity ? "In Stock" : "Not in stock"}
                         <br />₹{book.price}
                       </Card.Text>
-                      <Button className="col-md-12 d-flex center">
+                      <Button
+                        className="col-md-12 d-flex center"
+                        disabled={book.quantity ? false : true}
+                      >
                         Add to cart
                       </Button>
                     </Card.Body>

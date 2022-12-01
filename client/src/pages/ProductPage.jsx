@@ -20,6 +20,7 @@ import {
   ToastContainer,
 } from "react-bootstrap";
 import FormData from "form-data";
+import Reviews from "../componenets/Reviews";
 
 const ProductPage = () => {
   const addToCartUrl = "/api/upload_cart/";
@@ -117,17 +118,22 @@ const ProductPage = () => {
   };
 
   return (
-    <div className="bg-light">
+    <div>
       {product && (
         <Container>
           <Row className="product">
-            <Col lg={6} md={6} xs={12} className="book-img border-dark">
+            <Col lg={6} md={6} xs={12} className="book-img ">
               <img
-                className="book-img-item shadow-lg border-2 "
+                className="book-img-item shadow-lg "
                 src={`${imageDefaultPath}/${product.book_img}`}
               />
             </Col>
-            <Col lg={6} md={6} xs={12} className="book-description">
+            <Col
+              lg={6}
+              md={6}
+              xs={12}
+              className="book-description square border-start border-4 px-4"
+            >
               <div className="product-data">
                 <div className="bookname">
                   <h2> {product.book_name} </h2>
@@ -187,6 +193,7 @@ const ProductPage = () => {
                 <br />
                 <CartAmountToggle
                   amount={amount}
+                  className="bg-dark"
                   setDecrease={setDecrease}
                   setIncrease={setIncrease}
                 />
@@ -201,14 +208,13 @@ const ProductPage = () => {
                         Add to Cart
                       </button>
 
-                      <button onClick={handleBuy} className="btn btn-primary">
-                        <button
-                          className="text-white fw-bold btn btn-primary"
-                          style={{ textDecoration: "none" }}
-                          to={`/Cart`}
-                        >
-                          Buy Now
-                        </button>
+                      <button
+                        className="text-white fw-bold btn btn-primary"
+                        onClick={handleBuy}
+                        style={{ textDecoration: "none" }}
+                        to={`/Cart`}
+                      >
+                        Buy Now
                       </button>
                     </div>
                   ) : (
@@ -280,17 +286,31 @@ const ProductPage = () => {
               </div>
             </Col>
           </Row>
-          <Row>
-            <div style={{ backgroundColor: "#eee" }}>
-              <h4 className="fw-bold text-black px-2 py-2">
-                Product Description:{" "}
+
+          <div className="">
+            <div>
+              <h4
+                className="fw-bold text-white px-2 py-2"
+                style={{ backgroundColor: "#36368B" }}
+              >
+                Product Description{" "}
               </h4>
             </div>
-            <div className="px-10 py-2">
-              <h5 className="text-start text-wrap">{product.desc}</h5>
+            <div className="px-10 py-2 m-0">
+              <h5 className="text-start text-wrap px-2">{product.desc}</h5>
             </div>
-          </Row>
-          <Row></Row>
+          </div>
+
+          <div>
+            <h4
+              className="fw-bold text-white px-2 py-2"
+              style={{ backgroundColor: "#36368B" }}
+            >
+              Reviews{" "}
+            </h4>
+          </div>
+
+          <Reviews bookId={book_id} />
         </Container>
       )}
     </div>

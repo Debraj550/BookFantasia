@@ -11,6 +11,7 @@ const Orders = () => {
   const url = "/api/get_purchase/";
   const userId = window.localStorage.getItem("userId");
   const [errors, setErrors] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     getOrderData();
   }, []);
@@ -54,7 +55,7 @@ const Orders = () => {
                   </Alert>
                 )}
                 {orderData.length > 0 && (
-                  <table className="table">
+                  <table className="table border-bottom margin-bottom-4">
                     <thead>
                       <tr>
                         <th scope="col" className="border-0 bg-light">
@@ -79,9 +80,10 @@ const Orders = () => {
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      {orderData &&
-                        orderData.map((data, k) => (
+
+                    {orderData &&
+                      orderData.map((data, k) => (
+                        <tbody>
                           <tr key={k}>
                             <th scope="row" className="border-0">
                               <div className="text-wrap p-2">
@@ -123,9 +125,16 @@ const Orders = () => {
                             <td className="border-0 align-middle text-muted">
                               <strong>{data.date}</strong>
                             </td>
+                            <br></br>
                           </tr>
-                        ))}
-                    </tbody>
+                          <button
+                            className="ms-3 text-decoration-none bg-white border-0 text-primary"
+                            onClick={() => navigate(`/review/${data.book_id}`)}
+                          >
+                            <i class="fa fa-star"></i> Rate & Review Product
+                          </button>
+                        </tbody>
+                      ))}
                   </table>
                 )}
               </div>

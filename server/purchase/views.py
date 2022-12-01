@@ -52,9 +52,6 @@ def update_purchase(request):
     bookData.quantity = bookData.quantity - int(quantity)
     print("Boookdata - ",bookData.quantity)
     bookData.save()
-    # = int(bookData[0]['quantity']) - int(quantity)
-    #bookData[0]['quantity'] = newQuantity
-    #print("Boookdata2 - ",bookData)
     record=registration.objects.create(book_id=book_id,user_id=user_id,quantity=quantity)
     return JsonResponse(200, safe=False)
 

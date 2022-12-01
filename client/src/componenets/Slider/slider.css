@@ -21,10 +21,14 @@
 }
 
 .newbooks-page {
-  display: flex;
   background-color: rgb(232, 232, 232);
-  max-width: 100vw;
-  overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.newbooks-page::-webkit-scrollbar {
 }
 
 .home-card-title {

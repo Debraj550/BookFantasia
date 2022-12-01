@@ -12,6 +12,7 @@ import Orders from "../pages/Orders";
 import PostedBooks from "../pages/PostedBooks";
 import CheckoutForm from "../componenets/CheckoutForm";
 import SearchResult from "../componenets/catergory/SearchResult";
+import RatingAndReview from "../pages/RatingAndReview";
 
 const PathRoutes = () => {
   const isLoggedin = window.localStorage.getItem("token");
@@ -33,6 +34,7 @@ const PathRoutes = () => {
       <Route exact path="/signup" element={<Signup />}></Route>
       <Route exact path="/orders" element={<Orders />}></Route>
       <Route exact path="/posted_books" element={<PostedBooks />}></Route>
+      <Route exact path="/review/:bookId" element={<RatingAndReview />}></Route>
       <Route exact path="/signin" element={<Signin />}></Route>
       <Route exact path="/checkout" element={<CheckoutForm />}></Route>
       <Route

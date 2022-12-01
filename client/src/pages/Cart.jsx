@@ -131,11 +131,11 @@ const Cart = () => {
                     <tbody>
                       {cartData &&
                         cartData.map((data, k) => (
-                          <tr key={k}>
-                            <th scope="row" className="border-0">
+                          <tr key={k} className="border border-1">
+                            <th scope="row" className="">
                               <div className="text-wrap p-2">
                                 <Link
-                                  className="d-flex gap-4 align-items-center"
+                                  className="d-flex gap-4 align-items-center text-decoration-none "
                                   to={`/ProductPage/${data.book_id}`}
                                 >
                                   <img
@@ -146,12 +146,12 @@ const Cart = () => {
                                   />
                                   <div className="">
                                     <h6>
-                                      <a
-                                        href="#"
-                                        className="text-dark text-wrap w-70"
+                                      <span
+                                        className="text-dark text-wrap 
+                                        w-70"
                                       >
                                         {data.book_name}
-                                      </a>
+                                      </span>
                                     </h6>
                                   </div>
                                 </Link>

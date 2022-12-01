@@ -1,19 +1,24 @@
 import React from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import "../styles/cartTogle.css";
 
 const CartAmountToggle = ({ amount, setDecrease, setIncrease }) => {
   return (
-    <div className="cartToggle">
-      <div className="toggle">
-        <button onClick={() => setDecrease()}>
-          <FaMinus />
-        </button>
-        <div className="amount-style">{amount}</div>
-        <button onClick={() => setIncrease()}>
-          <FaPlus />
-        </button>
+    <div className="d-flex gap-2">
+      <button
+        className="bg-dark text-white  border-0"
+        onClick={() => setDecrease()}
+      >
+        <FaMinus />
+      </button>
+      <div className="bg-light" style={{ backgroundColor: "#eee" }}>
+        {amount}
       </div>
+      <button
+        className="bg-dark text-white border-0"
+        onClick={() => setIncrease()}
+      >
+        <FaPlus />
+      </button>
     </div>
   );
 };

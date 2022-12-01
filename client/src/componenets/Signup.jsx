@@ -4,9 +4,17 @@ import "../styles/signup.css";
 import { Link } from "react-router-dom";
 import axios from "../api/axios";
 import { Alert, Button } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
 const Signup = () => {
   const url = "/api/upload_user/";
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+    window.location.reload();
+  };
+  const handleShow = () => setShow(true);
+
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -15,11 +23,9 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
   const [signedUp, setSignedUp] = useState(false);
-
-  useEffect(() => {}, []);
 
   const handleChange = (event) => {
     const newData = { ...data };
@@ -27,48 +33,27 @@ const Signup = () => {
     setData(newData);
   };
 
-  const validate = (values) => {
-    const error = {};
-    if (!values.firstName) {
-      error.firstName = "First name is required.";
-    }
-    if (!values.lastName) {
-      error.lastName = "Last name is required.";
-    }
-    if (!values.email) {
-      error.email = "Email is required.";
-    }
-    if (!values.password) {
-      error.password = "Password is required.";
-    }
-    if (!values.confirmPassword) {
-      error.confirmPassword = "Required";
-    }
-    return error;
-  };
-
   const submitUser = async (event) => {
     event.preventDefault();
-    setErrors(validate(data));
     console.log(errors);
     const signupData = new FormData();
     if (data.password === data.confirmPassword) {
-      setIsSubmit(true);
+      setErrors(false);
       signupData.append("first_name", data.firstName);
       signupData.append("last_name", data.lastName);
       signupData.append("email_id", data.email);
       signupData.append("password", data.password);
-    }
-    if (isSubmit) {
-      axios
+      await axios
         .post(url, signupData)
         .then((res) => {
           setSignedUp(true);
+          setShow(true);
         })
-        .catch();
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      {
-      }
+      setErrors(true);
     }
   };
 
@@ -82,24 +67,29 @@ const Signup = () => {
   };
   return (
     <section
-      className="h-100"
+      className="h-100 d-flex align-items-center justify-content-center flex-column"
       style={{
         backgroundColor: bgColors.Yellow,
       }}
     >
-      {signedUp && (
-        <Alert variant="success">
-          Signed up successfully.
-          <Link
-            className="rounded-pill btn-success m-2 p-2"
-            to="/signin"
-            style={{ textDecoration: "none" }}
-          >
-            Click here to login
-          </Link>
-        </Alert>
-      )}
       <div className="container h-100">
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <h5 className="fw-bold text-success">Registration successful.</h5>
+          </Modal.Header>
+          <Modal.Body>
+            Kindly{" "}
+            <Link className="text-decoration-none fw-bold" to="/signin">
+              click here
+            </Link>{" "}
+            to sign in.
+          </Modal.Body>
+        </Modal>
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
             <div
@@ -197,7 +187,11 @@ const Signup = () => {
                           </label>
                         </div>
                       </div>
-                      <div className="form-check d-flex justify-content-flex-start mb-5"></div>
+                      <div className="form-check d-flex justify-content-flex-start mb-3 w-100">
+                        <Alert variant="danger" show={errors}>
+                          Invaid email or password.
+                        </Alert>
+                      </div>
 
                       <div className="form-check d-flex justify-content-center mb-5">
                         <label

@@ -91,7 +91,6 @@ const PostedBooks = () => {
                     src={`${imageDefaultPath}/${book.book_img}`}
                     width="100"
                     height="130"
-                    className="shadow border-2 bg-dark"
                   ></img>
                 </Col>
                 <Col>

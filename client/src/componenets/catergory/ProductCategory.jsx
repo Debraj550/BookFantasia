@@ -69,7 +69,10 @@ const ProductCategory = () => {
                       {product.quantity ? "In Stock" : "Not in stock"}
                       <br />₹{product.price}
                     </Card.Text>
-                    <Button className="col-md-12 d-flex center">
+                    <Button
+                      className="col-md-12 d-flex center"
+                      disabled={product.quantity ? false : true}
+                    >
                       Add to cart
                     </Button>
                   </Card.Body>

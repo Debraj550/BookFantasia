@@ -62,7 +62,7 @@ const Signin = (props) => {
 
   return (
     <section
-      className="h-100"
+      className="h-100 d-flex align-items-center"
       style={{
         backgroundColor: bgColors.Yellow,
         minHeight: "100vh",
