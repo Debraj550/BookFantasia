@@ -13,7 +13,7 @@ const SearchResult = () => {
   const imageDefaultPath = "http://127.0.0.1:8000/image_folder/";
   const { search } = useParams();
   //const category = parseInt(param);
-  const [productData, setProductData] = useState();
+  const [productData, setProductData] = useState([]);
   const [errors, setErrors] = useState();
 
   useEffect(() => {
@@ -39,12 +39,12 @@ const SearchResult = () => {
 
   return (
     <>
-      {productData ? (
-        <div className="product-page">
-          <Container>
-            <h3 className="m-3">
-              <Badge bg="primary">{`Search results for "${search}"`}</Badge>
-            </h3>
+      <div className="product-page">
+        <Container>
+          <h3 className="m-3">
+            <Badge bg="primary">{`Search results for "${search}"`}</Badge>
+          </h3>
+          {productData.length > 0 ? (
             <Row className="bg-light">
               {console.log(productData)}
               {productData &&
@@ -83,11 +83,13 @@ const SearchResult = () => {
                   </Col>
                 ))}
             </Row>
-          </Container>
-        </div>
-      ) : (
-        <Alert variant="danger">No search results found.</Alert>
-      )}
+          ) : (
+            <Alert variant="danger" className="fw-bold">
+              No search results found.
+            </Alert>
+          )}
+        </Container>
+      </div>
     </>
   );
 };

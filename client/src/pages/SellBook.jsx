@@ -177,6 +177,7 @@ const SellBook = () => {
                 <option value="business">Business</option>
                 <option value="medical">Medical</option>
                 <option value="stories">Stories</option>
+                <option value="exams">Exams</option>
                 <option value="others">Others</option>
               </select>
             </div>

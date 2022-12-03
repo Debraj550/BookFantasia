@@ -35,6 +35,7 @@ const Slider = () => {
     const response = await axios
       .get(url)
       .then((res) => {
+        console.log(res.data);
         const result = res.data.filter((currEle) => {
           return currEle.no_of_hit >= 0;
         });
@@ -44,7 +45,7 @@ const Slider = () => {
         });
         setNewBookData(result2);
         const result3 = res.data.filter((currEle) => {
-          return currEle.book_rating >= 1;
+          return currEle.book_rating >= 4;
         });
         setTrendBookData(result3);
       })

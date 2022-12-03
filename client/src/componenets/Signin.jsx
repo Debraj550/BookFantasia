@@ -9,6 +9,7 @@ const Signin = (props) => {
   const url = "/api/getUser/";
   const notLoggedin = props.failed ? true : false;
   const [visibleAlert, setVisibleAlert] = useState(notLoggedin ? true : false);
+  const [error, setError] = useState(false);
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -16,6 +17,15 @@ const Signin = (props) => {
 
   const navigate = useNavigate();
   const [isLoggedin, setIsLoggedin] = useState(false);
+
+  useEffect(() => {
+    const timeId = setTimeout(() => {
+      setError(false);
+    }, 1500);
+    return () => {
+      clearTimeout(timeId);
+    };
+  });
 
   useEffect(() => {
     if (notLoggedin) setVisibleAlert(true);
@@ -47,6 +57,7 @@ const Signin = (props) => {
           }
         });
     } catch (error) {
+      setError(true);
       console.log(error.response);
     }
   };
@@ -128,7 +139,13 @@ const Signin = (props) => {
                           </label>
                         </div>
                       </div>
-
+                      <Alert
+                        show={error}
+                        variant="danger"
+                        className="fw-bold text-center"
+                      >
+                        Invalid email address or password.
+                      </Alert>
                       <div className="form-check d-flex justify-content-flex-start mb-5"></div>
 
                       <div className="form-check d-flex justify-content-center mb-5">

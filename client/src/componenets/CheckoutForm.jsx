@@ -9,6 +9,7 @@ import "../styles/CheckoutForm.css";
 const CheckoutForm = (props) => {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const [...data] = props.data.cartData;
@@ -72,18 +73,35 @@ const CheckoutForm = (props) => {
           </h5>
           <div className="form-row">
             <label htmlFor="email" className="fw-bold">
-              Email Address
+              Email Address -
             </label>
             <input
               className="form-input"
               id="email"
-              name="name"
+              name="email"
               type="email"
               placeholder="Enter your email address"
               required
               value={email}
               onChange={(event) => {
                 setEmail(event.target.value);
+              }}
+            />
+          </div>
+          <div className="form-row">
+            <label htmlFor="address" className="fw-bold">
+              Shipping Address -
+            </label>
+            <input
+              className="form-input"
+              id="address"
+              name="address"
+              type="text"
+              placeholder="Enter your delivery address"
+              required
+              value={address}
+              onChange={(event) => {
+                setAddress(event.target.value);
               }}
             />
           </div>

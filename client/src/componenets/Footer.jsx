@@ -4,7 +4,7 @@ import "../styles/footer.css";
 
 const Footer = () => {
   return (
-    <div className="container site-footer">
+    <div className="container site-footer fixed-bottom">
       <footer
         className="text-center text-lg-start"
         style={{ backgroundColor: "#202020" }}

@@ -187,11 +187,15 @@ const Signup = () => {
                           </label>
                         </div>
                       </div>
-                      <div className="form-check d-flex justify-content-flex-start mb-3 w-100">
-                        <Alert variant="danger" show={errors}>
-                          Invaid email or password.
-                        </Alert>
-                      </div>
+
+                      <Alert
+                        variant="danger"
+                        closeButton
+                        show={true}
+                        className="text-center fw-bold"
+                      >
+                        Invaid email or password.
+                      </Alert>
 
                       <div className="form-check d-flex justify-content-center mb-5">
                         <label

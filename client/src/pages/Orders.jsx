@@ -32,8 +32,8 @@ const Orders = () => {
       });
   };
   return (
-    <div className="">
-      <section className="py-5">
+    <div>
+      <section className="py-5 vh-100 ">
         <div className="container text-center text-white fw-bolder px-4 bg-danger">
           <h4>Orders</h4>
         </div>

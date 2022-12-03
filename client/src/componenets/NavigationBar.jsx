@@ -21,6 +21,9 @@ const NavigationBar = () => {
               <Link to="/Home/business">Business</Link>
             </li>
             <li className="product-items">
+              <Link to="/Home/exams">Exams</Link>
+            </li>
+            <li className="product-items">
               <Link to="/Home/stories">Stories and Novels</Link>
             </li>
           </ul>
