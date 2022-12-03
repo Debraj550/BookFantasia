@@ -1,23 +1,8 @@
-
 <a name="readme-top"></a>
-
-
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h3 align="center">BookFantasia</h3>
 
@@ -34,7 +19,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]
+<img src="bookfantasia.png"  width="1280" height="720">
 Majority of the offline book sellers in India don't have a website of their own to sell their stock of books online. Thus,with the help of this portal “BookFantasia”, sellers and also consumers can sell their online books and set their own pricing for the same, resulting in efficient management of shipping cost and higher reach to potential customers.
 
 
