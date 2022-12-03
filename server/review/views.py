@@ -14,7 +14,7 @@ from django.forms.models import model_to_dict
 from django.core import serializers
 from .models import *
 
-# Create your views here.
+
 @api_view(["GET"])
 def get_registration(request):
     cond = request.GET.get('user_id', 'NULL')

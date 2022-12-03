@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import FormData from "form-data";
 import Alert from "react-bootstrap/Alert";
+import { Modal } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const SellBook = () => {
   const url = "/api/upload_books/";
@@ -13,6 +15,8 @@ const SellBook = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
+  const [show, setShow] = useState(false);
+
   const [bookData, setBookData] = useState({
     userId: userId,
     bookName: "",
@@ -28,6 +32,11 @@ const SellBook = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleClose = () => {
+    setShow(false);
+    navigate("/Home");
+  };
+  const handleShow = () => setShow(true);
   const handleChange = (event) => {
     const newBookData = { ...bookData };
     newBookData[event.target.id] = event.target.value;
@@ -72,6 +81,7 @@ const SellBook = () => {
       .then((res) => {
         {
           setIsSubmitted(true);
+          setShow(true);
         }
       })
       .catch((errors) => console.log(errors));
@@ -79,246 +89,262 @@ const SellBook = () => {
   return (
     <div className="sellbook-container">
       <div className="form-container">
-        {isSubmitted ? (
-          <Alert variant="success">
-            Your book has been posted successfully.
-          </Alert>
-        ) : (
-          <form onSubmit={submitBook} className="px-4 py-4">
-            <div className="form-group row">
-              <h5 className="register-book-heading px-2 py-2 text-uppercase fw-bold text-white bg-danger">
-                Register Book
-              </h5>
-              <br></br>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                htmlFor="book_name"
-                className="col-sm-2 col-form-label fw-bold"
+        {show && (
+          <Modal
+            show={show}
+            onHide={handleClose}
+            backdrop="static"
+            keyboard={false}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title
+                className="fw-bold text-white w-100 text-center"
+                style={{ backgroundColor: "#36368B" }}
               >
-                Book Name
-              </label>
-              <div className="col-sm-10">
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  className="form-control"
-                  id="bookName"
-                  placeholder="Enter the book name"
-                />
-              </div>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                htmlFor="book_name"
-                className="col-sm-2 col-form-label fw-bold"
+                Status
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="fw-bold text-center text-success">
+              Your book has been posted
+            </Modal.Body>
+            <Modal.Footer className="d-flex justify-content-center">
+              <Button
+                variant="secondary"
+                onClick={() => navigate("/posted_books")}
               >
-                Author Name
-              </label>
-              <div className="col-sm-10">
-                <input
-                  onChange={handleChange}
-                  type="text"
-                  className="form-control"
-                  id="authorName"
-                  placeholder="Enter the author name"
-                />
-              </div>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                htmlFor="book_name"
-                className="col-sm-2 col-form-label fw-bold"
-              >
-                Category
-              </label>
-              <div className="col-sm-2 btn-group">
-                <select
-                  id="category"
-                  onChange={handleChange}
-                  className="form-select"
-                  aria-label="Default select example"
-                >
-                  <option value="">Select</option>
-                  <option value="engineering">Engineering</option>
-                  <option value="business">Business</option>
-                  <option value="medical">Medical</option>
-                  <option value="stories">Stories</option>
-                  <option value="others">Others</option>
-                </select>
-              </div>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                htmlFor="book_name"
-                className="col-sm-2 col-form-label fw-bold"
-              >
-                Language
-              </label>
-              <div className="col-sm-10">
-                <div className="form-check">
-                  <input
-                    onChange={handleChange}
-                    className="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="language"
-                    value="english"
-                    defaultChecked
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault1"
-                  >
-                    English
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    onChange={handleChange}
-                    className="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="language"
-                    value="hindi"
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault2"
-                  >
-                    Hindi
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                htmlFor="book_name"
-                className="col-sm-2 col-form-label fw-bold"
-              >
-                Description
-              </label>
-              <div className="col-sm-10">
-                <textarea
-                  onChange={handleChange}
-                  id="description"
-                  className="form-control"
-                  aria-label="With textarea"
-                  placeholder="Enter book description"
-                  style={{ height: "150px" }}
-                ></textarea>
-              </div>
-            </div>
-            <div className="form-group row mb-2">
-              <label
-                className="col-sm-2 col-form-label fw-bold"
-                htmlFor="exampleFormControlFile1"
-              >
-                Upload image
-              </label>
-              <div className="col-sm-10">
-                <input
-                  onChange={imageChange}
-                  type="file"
-                  className="form-control-file"
-                  id="image"
-                  accept="image/png, image/jpeg"
-                />
-              </div>
-            </div>
-            {image && (
-              <div className="form-group row mb-2">
-                <label
-                  className="col-sm-2 col-form-label fw-bold"
-                  htmlFor="exampleFormControlFile1"
-                >
-                  [ Preview ]
-                </label>
-                <div className="col-sm-10">
-                  <img src={preview} alt="image" width={200} height={250}></img>
-                </div>
-              </div>
-            )}
-
-            <div className="form-group row mb-2">
-              <label
-                className="col-sm-2 col-form-label fw-bold"
-                htmlFor="exampleFormControlFile1"
-              >
-                Quantity
-              </label>
-              <div className="col-sm-3 d-flex space-betweeen">
-                <input
-                  onChange={handleChange}
-                  id="quantity"
-                  value={bookData.quantity}
-                  type="number"
-                  min="1"
-                  className="form-control"
-                  aria-label="Amount"
-                  placeholder="Enter quantity"
-                />
-              </div>
-            </div>
-            <div className="form-group row mb-4">
-              <label
-                className="col-sm-2 col-form-label fw-bold"
-                htmlFor="exampleFormControlFile1"
-              >
-                Price
-              </label>
-              <div className="col-sm-4 d-flex space-betweeen">
-                <span className="input-group-text">
-                  <i className="fa fa-rupee"></i>
-                </span>
-                <input
-                  onChange={handleChange}
-                  id="price"
-                  value={bookData.price}
-                  type="number"
-                  min="0"
-                  step="1"
-                  className="form-control"
-                  aria-label="Amount"
-                  placeholder="Enter price"
-                />
-                <span className="input-group-text">.00</span>
-              </div>
-            </div>
-            <div className="form-group row mb-4">
-              <label
-                className="col-sm-2 col-form-label fw-bold"
-                htmlFor="exampleFormControlFile1"
-              >
-                Enter UPI ID:
-              </label>
-              <div className="col-sm-6 d-flex ">
-                <input
-                  id="upi"
-                  type="text"
-                  placeholder="Enter UPI"
-                  className="border-0 px-2"
-                />
-              </div>
-            </div>
-            <div className="form-group row submit-section">
-              <hr></hr>
-              <button
-                type="button"
-                className="btn col-sm-2 rounded-pill btn-dark"
-                onClick={() => navigate("/Home")}
-              >
-                Back
-              </button>
-              <button
-                type="submit"
-                className="btn  col-sm-2 rounded-pill btn-dark"
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+                Dashboard
+              </Button>
+            </Modal.Footer>
+          </Modal>
         )}
+        <form onSubmit={submitBook} className="px-4 py-4">
+          <div className="form-group row">
+            <h5 className="register-book-heading px-2 py-2 text-uppercase fw-bold text-white bg-danger">
+              Register Book
+            </h5>
+            <br></br>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              htmlFor="book_name"
+              className="col-sm-2 col-form-label fw-bold"
+            >
+              Book Name
+            </label>
+            <div className="col-sm-10">
+              <input
+                onChange={handleChange}
+                type="text"
+                className="form-control"
+                id="bookName"
+                placeholder="Enter the book name"
+              />
+            </div>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              htmlFor="book_name"
+              className="col-sm-2 col-form-label fw-bold"
+            >
+              Author Name
+            </label>
+            <div className="col-sm-10">
+              <input
+                onChange={handleChange}
+                type="text"
+                className="form-control"
+                id="authorName"
+                placeholder="Enter the author name"
+              />
+            </div>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              htmlFor="book_name"
+              className="col-sm-2 col-form-label fw-bold"
+            >
+              Category
+            </label>
+            <div className="col-sm-2 btn-group">
+              <select
+                id="category"
+                onChange={handleChange}
+                className="form-select"
+                aria-label="Default select example"
+              >
+                <option value="">Select</option>
+                <option value="engineering">Engineering</option>
+                <option value="business">Business</option>
+                <option value="medical">Medical</option>
+                <option value="stories">Stories</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              htmlFor="book_name"
+              className="col-sm-2 col-form-label fw-bold"
+            >
+              Language
+            </label>
+            <div className="col-sm-10">
+              <div className="form-check">
+                <input
+                  onChange={handleChange}
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="language"
+                  value="english"
+                  defaultChecked
+                />
+                <label className="form-check-label" htmlFor="flexRadioDefault1">
+                  English
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  onChange={handleChange}
+                  className="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="language"
+                  value="hindi"
+                />
+                <label className="form-check-label" htmlFor="flexRadioDefault2">
+                  Hindi
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              htmlFor="book_name"
+              className="col-sm-2 col-form-label fw-bold"
+            >
+              Description
+            </label>
+            <div className="col-sm-10">
+              <textarea
+                onChange={handleChange}
+                id="description"
+                className="form-control"
+                aria-label="With textarea"
+                placeholder="Enter book description"
+                style={{ height: "150px" }}
+              ></textarea>
+            </div>
+          </div>
+          <div className="form-group row mb-2">
+            <label
+              className="col-sm-2 col-form-label fw-bold"
+              htmlFor="exampleFormControlFile1"
+            >
+              Upload image
+            </label>
+            <div className="col-sm-10">
+              <input
+                onChange={imageChange}
+                type="file"
+                className="form-control-file"
+                id="image"
+                accept="image/png, image/jpeg"
+              />
+            </div>
+          </div>
+          {image && (
+            <div className="form-group row mb-2">
+              <label
+                className="col-sm-2 col-form-label fw-bold"
+                htmlFor="exampleFormControlFile1"
+              >
+                [ Preview ]
+              </label>
+              <div className="col-sm-10">
+                <img src={preview} alt="image" width={200} height={250}></img>
+              </div>
+            </div>
+          )}
+
+          <div className="form-group row mb-2">
+            <label
+              className="col-sm-2 col-form-label fw-bold"
+              htmlFor="exampleFormControlFile1"
+            >
+              Quantity
+            </label>
+            <div className="col-sm-3 d-flex space-betweeen">
+              <input
+                onChange={handleChange}
+                id="quantity"
+                value={bookData.quantity}
+                type="number"
+                min="1"
+                className="form-control"
+                aria-label="Amount"
+                placeholder="Enter quantity"
+              />
+            </div>
+          </div>
+          <div className="form-group row mb-4">
+            <label
+              className="col-sm-2 col-form-label fw-bold"
+              htmlFor="exampleFormControlFile1"
+            >
+              Price
+            </label>
+            <div className="col-sm-4 d-flex space-betweeen">
+              <span className="input-group-text">
+                <i className="fa fa-rupee"></i>
+              </span>
+              <input
+                onChange={handleChange}
+                id="price"
+                value={bookData.price}
+                type="number"
+                min="0"
+                step="1"
+                className="form-control"
+                aria-label="Amount"
+                placeholder="Enter price"
+              />
+              <span className="input-group-text">.00</span>
+            </div>
+          </div>
+          <div className="form-group row mb-4">
+            <label
+              className="col-sm-2 col-form-label fw-bold"
+              htmlFor="exampleFormControlFile1"
+            >
+              Enter UPI ID:
+            </label>
+            <div className="col-sm-6 d-flex ">
+              <input
+                id="upi"
+                type="text"
+                placeholder="Enter UPI"
+                className="border-0 px-2"
+              />
+            </div>
+          </div>
+          <div className="form-group row submit-section">
+            <hr></hr>
+            <button
+              type="button"
+              className="btn col-sm-2 rounded-pill btn-dark"
+              onClick={() => navigate("/Home")}
+            >
+              Back
+            </button>
+            <button
+              type="submit"
+              className="btn  col-sm-2 rounded-pill btn-dark"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

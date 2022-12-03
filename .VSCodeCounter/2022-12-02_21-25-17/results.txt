@@ -1,0 +1,217 @@
+Date : 2022-12-02 21:25:17
+Directory : /Users/debraj/Desktop/BookSelling
+Total : 155 files,  46335 codes, 185 comments, 648 blanks, all 47168 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          4 |     41,771 |          0 |          4 |     41,775 |
+| JavaScript React |         22 |      2,611 |          7 |        147 |      2,765 |
+| Python           |         90 |      1,092 |        142 |        370 |      1,604 |
+| CSS              |         20 |        542 |          6 |         70 |        618 |
+| HTML             |          5 |        133 |         23 |          6 |        162 |
+| JavaScript       |          6 |         78 |          7 |         18 |        103 |
+| XML              |          7 |         70 |          0 |          0 |         70 |
+| Markdown         |          1 |         38 |          0 |         33 |         71 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                      |        155 |     46,335 |        185 |        648 |     47,168 |
+| .idea                                                                                                                  |          6 |         69 |          0 |          0 |         69 |
+| .idea/inspectionProfiles                                                                                               |          2 |         36 |          0 |          0 |         36 |
+| client                                                                                                                 |         55 |     45,091 |         43 |        273 |     45,407 |
+| client/public                                                                                                          |          2 |         75 |         23 |          2 |        100 |
+| client/src                                                                                                             |         50 |      3,232 |         20 |        236 |      3,488 |
+| client/src/api                                                                                                         |          1 |          9 |          0 |          3 |         12 |
+| client/src/assets                                                                                                      |          3 |          1 |          0 |          2 |          3 |
+| client/src/componenets                                                                                                 |         14 |      1,301 |          4 |         92 |      1,397 |
+| client/src/componenets/Slider                                                                                          |          3 |        337 |          0 |         24 |        361 |
+| client/src/componenets/catergory                                                                                       |          2 |        167 |          4 |         14 |        185 |
+| client/src/pages                                                                                                       |          7 |      1,304 |          2 |         53 |      1,359 |
+| client/src/routes                                                                                                      |          1 |         59 |          1 |          3 |         63 |
+| client/src/services                                                                                                    |          2 |         57 |          0 |         10 |         67 |
+| client/src/styles                                                                                                      |         16 |        446 |          6 |         58 |        510 |
+| server                                                                                                                 |         94 |      1,175 |        142 |        375 |      1,692 |
+| server/book                                                                                                            |         18 |        335 |         25 |         94 |        454 |
+| server/book/migrations                                                                                                 |         10 |        133 |          9 |         56 |        198 |
+| server/cart                                                                                                            |         14 |        172 |         21 |         62 |        255 |
+| server/cart/migrations                                                                                                 |          7 |         83 |          6 |         38 |        127 |
+| server/payments                                                                                                        |          8 |         33 |          5 |         15 |         53 |
+| server/payments/migrations                                                                                             |          1 |          0 |          0 |          1 |          1 |
+| server/pre_registration                                                                                                |         10 |         91 |          6 |         33 |        130 |
+| server/pre_registration/migrations                                                                                     |          3 |         36 |          2 |         14 |         52 |
+| server/purchase                                                                                                        |         11 |        117 |         10 |         39 |        166 |
+| server/purchase/migrations                                                                                             |          4 |         47 |          3 |         20 |         70 |
+| server/review                                                                                                          |          9 |         98 |          5 |         26 |        129 |
+| server/review/migrations                                                                                               |          2 |         17 |          1 |          8 |         26 |
+| server/soft_proj                                                                                                       |          5 |        105 |         58 |         46 |        209 |
+| server/templates                                                                                                       |          4 |         83 |          0 |          5 |         88 |
+| server/user_detail                                                                                                     |         13 |        126 |          9 |         49 |        184 |
+| server/user_detail/migrations                                                                                          |          5 |         57 |          4 |         26 |         87 |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                                               | language         | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /Users/debraj/Desktop/BookSelling/.idea/BookSelling.iml                                                                | XML              |         12 |          0 |          0 |         12 |
+| /Users/debraj/Desktop/BookSelling/.idea/inspectionProfiles/Project_Default.xml                                         | XML              |         30 |          0 |          0 |         30 |
+| /Users/debraj/Desktop/BookSelling/.idea/inspectionProfiles/profiles_settings.xml                                       | XML              |          6 |          0 |          0 |          6 |
+| /Users/debraj/Desktop/BookSelling/.idea/misc.xml                                                                       | XML              |          7 |          0 |          0 |          7 |
+| /Users/debraj/Desktop/BookSelling/.idea/modules.xml                                                                    | XML              |          8 |          0 |          0 |          8 |
+| /Users/debraj/Desktop/BookSelling/.idea/vcs.xml                                                                        | XML              |          6 |          0 |          0 |          6 |
+| /Users/debraj/Desktop/BookSelling/client/README.md                                                                     | Markdown         |         38 |          0 |         33 |         71 |
+| /Users/debraj/Desktop/BookSelling/client/package-lock.json                                                             | JSON             |     41,686 |          0 |          1 |     41,687 |
+| /Users/debraj/Desktop/BookSelling/client/package.json                                                                  | JSON             |         60 |          0 |          1 |         61 |
+| /Users/debraj/Desktop/BookSelling/client/public/index.html                                                             | HTML             |         50 |         23 |          1 |         74 |
+| /Users/debraj/Desktop/BookSelling/client/public/manifest.json                                                          | JSON             |         25 |          0 |          1 |         26 |
+| /Users/debraj/Desktop/BookSelling/client/src/App.js                                                                    | JavaScript       |         18 |          0 |          3 |         21 |
+| /Users/debraj/Desktop/BookSelling/client/src/App.test.js                                                               | JavaScript       |          7 |          0 |          2 |          9 |
+| /Users/debraj/Desktop/BookSelling/client/src/api/axios.jsx                                                             | JavaScript React |          9 |          0 |          3 |         12 |
+| /Users/debraj/Desktop/BookSelling/client/src/assets/App.css                                                            | CSS              |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/client/src/assets/books.json                                                         | JSON             |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/client/src/assets/logo.svg                                                           | XML              |          1 |          0 |          0 |          1 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/CartAmountToggle.jsx                                          | JavaScript React |         24 |          0 |          3 |         27 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/CheckoutForm.jsx                                              | JavaScript React |        102 |          0 |          7 |        109 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Footer.jsx                                                    | JavaScript React |         55 |          0 |          4 |         59 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Header.jsx                                                    | JavaScript React |        142 |          0 |          9 |        151 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/NavigationBar.jsx                                             | JavaScript React |         31 |          0 |          2 |         33 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Reviews.jsx                                                   | JavaScript React |         41 |          0 |          3 |         44 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Signin.jsx                                                    | JavaScript React |        159 |          0 |         11 |        170 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Signup.jsx                                                    | JavaScript React |        221 |          0 |         11 |        232 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Slider/Slider.jsx                                             | JavaScript React |        252 |          0 |         15 |        267 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Slider/slider.css                                             | CSS              |         65 |          0 |          7 |         72 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Slider/slider_bac.css                                         | CSS              |         20 |          0 |          2 |         22 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/Star.jsx                                                      | JavaScript React |         22 |          0 |          4 |         26 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/catergory/ProductCategory.jsx                                 | JavaScript React |         80 |          2 |          7 |         89 |
+| /Users/debraj/Desktop/BookSelling/client/src/componenets/catergory/SearchResult.jsx                                    | JavaScript React |         87 |          2 |          7 |         96 |
+| /Users/debraj/Desktop/BookSelling/client/src/index.css                                                                 | CSS              |         11 |          0 |          2 |         13 |
+| /Users/debraj/Desktop/BookSelling/client/src/index.js                                                                  | JavaScript       |          6 |          3 |          5 |         14 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/Cart.jsx                                                            | JavaScript React |        285 |          1 |         12 |        298 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/Home.jsx                                                            | JavaScript React |         16 |          0 |          3 |         19 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/Orders.jsx                                                          | JavaScript React |        145 |          0 |          5 |        150 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/PostedBooks.jsx                                                     | JavaScript React |        119 |          0 |          6 |        125 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/ProductPage.jsx                                                     | JavaScript React |        305 |          0 |         15 |        320 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/RatingAndReview.jsx                                                 | JavaScript React |        116 |          0 |          3 |        119 |
+| /Users/debraj/Desktop/BookSelling/client/src/pages/SellBook.jsx                                                        | JavaScript React |        318 |          1 |          9 |        328 |
+| /Users/debraj/Desktop/BookSelling/client/src/reportWebVitals.js                                                        | JavaScript       |         12 |          0 |          2 |         14 |
+| /Users/debraj/Desktop/BookSelling/client/src/routes/PathRoutes.jsx                                                     | JavaScript React |         59 |          1 |          3 |         63 |
+| /Users/debraj/Desktop/BookSelling/client/src/services/API.js                                                           | JavaScript       |         34 |          0 |          5 |         39 |
+| /Users/debraj/Desktop/BookSelling/client/src/services/authorization.jsx                                                | JavaScript React |         23 |          0 |          5 |         28 |
+| /Users/debraj/Desktop/BookSelling/client/src/setupTests.js                                                             | JavaScript       |          1 |          4 |          1 |          6 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/CheckoutForm.css                                                   | CSS              |         54 |          2 |         11 |         67 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/Orders.css                                                         | CSS              |          3 |          0 |          1 |          4 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/PostedBooks.css                                                    | CSS              |          9 |          0 |          3 |         12 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/cart.css                                                           | CSS              |          5 |          0 |          1 |          6 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/cartTogle.css                                                      | CSS              |         20 |          4 |          1 |         25 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/footer.css                                                         | CSS              |         21 |          0 |          1 |         22 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/header.css                                                         | CSS              |        121 |          0 |         13 |        134 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/home.css                                                           | CSS              |          4 |          0 |          1 |          5 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/navigation.css                                                     | CSS              |         34 |          0 |          1 |         35 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/productCategory.css                                                | CSS              |         22 |          0 |          4 |         26 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/productpage.css                                                    | CSS              |         93 |          0 |         10 |        103 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/sellbook.css                                                       | CSS              |         38 |          0 |          6 |         44 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/signin.css                                                         | CSS              |          5 |          0 |          1 |          6 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/signout.css                                                        | CSS              |          4 |          0 |          1 |          5 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/signup.css                                                         | CSS              |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/client/src/styles/star.css                                                           | CSS              |         13 |          0 |          2 |         15 |
+| /Users/debraj/Desktop/BookSelling/server/__init__.py                                                                   | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/book/__init__.py                                                              | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/book/admin.py                                                                 | Python           |          3 |          1 |          2 |          6 |
+| /Users/debraj/Desktop/BookSelling/server/book/apps.py                                                                  | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0001_initial.py                                               | Python           |         24 |          1 |          7 |         32 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0002_remove_book_user_id.py                                   | Python           |         11 |          1 |          6 |         18 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0003_book_user_id.py                                          | Python           |         15 |          1 |          6 |         22 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0004_alter_book_user_id.py                                    | Python           |         14 |          1 |          6 |         21 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0005_book_book_img_book_seller_rating.py                      | Python           |         17 |          1 |          6 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0006_alter_book_seller_rating.py                              | Python           |         12 |          1 |          6 |         19 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0007_book_book_rating_book_date_time.py                       | Python           |         17 |          1 |          6 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0008_remove_book_seller_rating.py                             | Python           |         11 |          1 |          6 |         18 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/0009_alter_book_user_id.py                                    | Python           |         12 |          1 |          6 |         19 |
+| /Users/debraj/Desktop/BookSelling/server/book/migrations/__init__.py                                                   | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/book/models.py                                                                | Python           |         18 |          1 |          4 |         23 |
+| /Users/debraj/Desktop/BookSelling/server/book/serializers.py                                                           | Python           |          6 |          0 |          2 |          8 |
+| /Users/debraj/Desktop/BookSelling/server/book/tests.py                                                                 | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/book/url.py                                                                   | Python           |         11 |          0 |          3 |         14 |
+| /Users/debraj/Desktop/BookSelling/server/book/views.py                                                                 | Python           |        159 |         13 |         21 |        193 |
+| /Users/debraj/Desktop/BookSelling/server/cart/__init__.py                                                              | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/cart/admin.py                                                                 | Python           |          3 |          1 |          2 |          6 |
+| /Users/debraj/Desktop/BookSelling/server/cart/apps.py                                                                  | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0001_initial.py                                               | Python           |         18 |          1 |          7 |         26 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0002_remove_cart_data_user_id_alter_cart_data_book_id.py      | Python           |         16 |          1 |          6 |         23 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0003_cart_data_user_id.py                                     | Python           |         13 |          1 |          6 |         20 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0004_cart_data_quantity.py                                    | Python           |         12 |          1 |          6 |         19 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0005_alter_cart_data_quantity.py                              | Python           |         10 |          1 |          6 |         17 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/0006_remove_cart_data_id_cart_data_cart_id.py                 | Python           |         14 |          1 |          6 |         21 |
+| /Users/debraj/Desktop/BookSelling/server/cart/migrations/__init__.py                                                   | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/cart/models.py                                                                | Python           |          8 |          1 |          1 |         10 |
+| /Users/debraj/Desktop/BookSelling/server/cart/tests.py                                                                 | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/cart/url.py                                                                   | Python           |          8 |          0 |          3 |         11 |
+| /Users/debraj/Desktop/BookSelling/server/cart/views.py                                                                 | Python           |         65 |         12 |         12 |         89 |
+| /Users/debraj/Desktop/BookSelling/server/manage.py                                                                     | Python           |         15 |          3 |          5 |         23 |
+| /Users/debraj/Desktop/BookSelling/server/payments/__init__.py                                                          | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/payments/admin.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/payments/apps.py                                                              | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/payments/migrations/__init__.py                                               | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/payments/models.py                                                            | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/payments/tests.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/payments/urls.py                                                              | Python           |          7 |          0 |          1 |          8 |
+| /Users/debraj/Desktop/BookSelling/server/payments/views.py                                                             | Python           |         19 |          2 |          3 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/__init__.py                                                  | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/admin.py                                                     | Python           |          3 |          1 |          2 |          6 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/apps.py                                                      | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/migrations/0001_initial.py                                   | Python           |         19 |          1 |          7 |         27 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/migrations/0002_alter_registration_book_id_and_more.py       | Python           |         17 |          1 |          6 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/migrations/__init__.py                                       | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/models.py                                                    | Python           |          7 |          1 |          1 |          9 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/tests.py                                                     | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/url.py                                                       | Python           |          6 |          0 |          3 |          9 |
+| /Users/debraj/Desktop/BookSelling/server/pre_registration/views.py                                                     | Python           |         34 |          1 |          7 |         42 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/__init__.py                                                          | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/admin.py                                                             | Python           |          3 |          0 |          1 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/apps.py                                                              | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/migrations/0001_initial.py                                           | Python           |         16 |          1 |          7 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/migrations/0002_purchase_delete_cart_data.py                         | Python           |         20 |          1 |          6 |         27 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/migrations/0003_remove_purchase_books_and_quanty_purchase_book_id.py | Python           |         11 |          1 |          6 |         18 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/migrations/__init__.py                                               | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/models.py                                                            | Python           |          9 |          1 |          1 |         11 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/tests.py                                                             | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/url.py                                                               | Python           |          6 |          0 |          3 |          9 |
+| /Users/debraj/Desktop/BookSelling/server/purchase/views.py                                                             | Python           |         47 |          5 |          8 |         60 |
+| /Users/debraj/Desktop/BookSelling/server/review/__init__.py                                                            | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/review/admin.py                                                               | Python           |          3 |          0 |          1 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/review/apps.py                                                                | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/review/migrations/0001_initial.py                                             | Python           |         17 |          1 |          7 |         25 |
+| /Users/debraj/Desktop/BookSelling/server/review/migrations/__init__.py                                                 | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/review/models.py                                                              | Python           |          8 |          1 |          4 |         13 |
+| /Users/debraj/Desktop/BookSelling/server/review/tests.py                                                               | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/review/url.py                                                                 | Python           |          6 |          0 |          3 |          9 |
+| /Users/debraj/Desktop/BookSelling/server/review/views.py                                                               | Python           |         59 |          2 |          4 |         65 |
+| /Users/debraj/Desktop/BookSelling/server/soft_proj/__init__.py                                                         | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/soft_proj/asgi.py                                                             | Python           |          4 |          8 |          5 |         17 |
+| /Users/debraj/Desktop/BookSelling/server/soft_proj/settings.py                                                         | Python           |         83 |         27 |         31 |        141 |
+| /Users/debraj/Desktop/BookSelling/server/soft_proj/urls.py                                                             | Python           |         14 |         15 |          4 |         33 |
+| /Users/debraj/Desktop/BookSelling/server/soft_proj/wsgi.py                                                             | Python           |          4 |          8 |          5 |         17 |
+| /Users/debraj/Desktop/BookSelling/server/templates/add.html                                                            | HTML             |         20 |          0 |          3 |         23 |
+| /Users/debraj/Desktop/BookSelling/server/templates/follow_sign_in.html                                                 | HTML             |         19 |          0 |          1 |         20 |
+| /Users/debraj/Desktop/BookSelling/server/templates/forms.html                                                          | HTML             |         22 |          0 |          1 |         23 |
+| /Users/debraj/Desktop/BookSelling/server/templates/sign_in.html                                                        | HTML             |         22 |          0 |          0 |         22 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/__init__.py                                                       | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/admin.py                                                          | Python           |          3 |          1 |          2 |          6 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/apps.py                                                           | Python           |          4 |          0 |          3 |          7 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/migrations/0001_initial.py                                        | Python           |         17 |          1 |          7 |         25 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/migrations/0002_rename_user_person.py                             | Python           |         11 |          1 |          6 |         18 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/migrations/0003_remove_person_id_person_user_id.py                | Python           |         17 |          1 |          6 |         24 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/migrations/0004_person_seller_rating.py                           | Python           |         12 |          1 |          6 |         19 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/migrations/__init__.py                                            | Python           |          0 |          0 |          1 |          1 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/models.py                                                         | Python           |         10 |          1 |          4 |         15 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/serializers.py                                                    | Python           |          6 |          0 |          2 |          8 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/tests.py                                                          | Python           |          1 |          1 |          2 |          4 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/url.py                                                            | Python           |          7 |          1 |          4 |         12 |
+| /Users/debraj/Desktop/BookSelling/server/user_detail/views.py                                                          | Python           |         38 |          1 |          5 |         44 |
+| Total                                                                                                                  |                  |     46,335 |        185 |        648 |     47,168 |
++------------------------------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
