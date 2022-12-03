@@ -19,7 +19,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]
+![Product Name Screen Shot][product-screenshot]
 Majority of the offline book sellers in India don't have a website of their own to sell their stock of books online. Thus,with the help of this portal “BookFantasia”, sellers and also consumers can sell their online books and set their own pricing for the same, resulting in efficient management of shipping cost and higher reach to potential customers.
 
 
@@ -32,7 +32,7 @@ The project is built with -
 
 * [![React][React.js]][React-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![Django][Django.com]][Django-url]
+* ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
